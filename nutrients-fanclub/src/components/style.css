@@ -6,3 +6,32 @@
 a {
     font-family: 'Kumbh Sans', sans-serif;
 }
+
+.searchbar {
+    right: 100;
+}
+
+.sidebar {
+    width: 150px;
+    height: 100%;
+    background-color: #333;
+    color: white;
+    position: fixed;
+    left: 0;
+    padding: 20px;
+}
+  
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+  
+.sidebar ul li {
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.dark-mode {
+    background-color: #2E6F57;
+    color: white;
+}
