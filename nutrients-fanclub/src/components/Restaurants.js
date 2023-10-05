@@ -2,7 +2,7 @@ import React from 'react';
 
 function Restaurants() {
   return (
-    <div className="row row-cols-1 row-cols-md-3 g-4" style={{ padding: '2%' }}>
+    <div className="row row-cols-7 row-cols-md-7" style={{ padding: '2%' }}>
       <div className="col">
         <div className="card">
           <img src="https://lh3.googleusercontent.com/p/AF1QipP5GR5miR3USPUEfvjO2tafEjSPd9DXPv8pFx3N=s1360-w1360-h1020" className="card-img-top" alt="..." style={{ maxHeight: 'fit-content' }} />
