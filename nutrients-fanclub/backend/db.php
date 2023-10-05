@@ -1,5 +1,9 @@
 <?php
+<<<<<<< Updated upstream
 $servername = "oceanus.cse.buffalo.edu:3306";
+=======
+$servername = "oceanus.cse.buffalo.edu";
+>>>>>>> Stashed changes
 $dbname = "haobowan_db";
 $username = "username";
 $password = "password";
