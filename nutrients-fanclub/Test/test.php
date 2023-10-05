@@ -38,6 +38,51 @@
     echo "<br>";
     echo " we get:  ";
     echo hash_decode("tes4",$rs);
+    echo "<br>";
+    echo "<br>";
+    $usernames = ["simpleName", "veryLongUsernameMoreThan15Chars"];
+    $passwords = ["short", "validLength123", "veryLongPasswordMoreThan20Characters"];
+
+
+    $inputs = ["normalInput", "inv@lid", "inval!d", "goodInput"];
+
+    $checks = ["password1", "password", "12345", "Pass123"];
+
+
+    echo "<br/>";
+
+    foreach ($passwords as $password) {
+    
+   
+    echo "Testing password '$password': ";
+        echo isPasswordValidLength($password) ? "Valid Length" : "Invalid Length";
+        echo "<br/>";
+}
+
+    echo "<br/>";
+
+    foreach ($inputs as $input) {
+        echo "Testing input '$input': ";
+        echo isValidInput($input) ? "Valid Input" : "Invalid Input";
+        echo "<br/>";
+}
+
+    echo "<br/>";
+
+    foreach ($checks as $check) {
+        echo "Testing check '$check': ";
+        echo containsNumberAndLetter($check) ? "Contains Number and Letter" : "Does Not Contain Number and Letter";
+        echo "<br/>";
+}
+
+$tests = ["Valid123", "INVALID!", "AnotherValidOne456", "12345", "abcABC"];
+echo "<br/>";
+foreach ($tests as $test) {
+    echo "Testing '$test': ";
+    echo checkPasswordValidity($test);
+    echo "<br/>";
+}
+
     ?>
 </body>
 </html>

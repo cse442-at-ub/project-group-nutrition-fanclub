@@ -1,8 +1,8 @@
 <?php
-$servername = "oceanus.cse.buffalo.edu:3306";
-$dbname = "haobowan_db";
-$username = "username";
-$password = "password";
+$servername = "oceanus.cse.buffalo.edu";
+$dbname = "cse442_2023_fall_team_ae_db";
+$username = "haobowan";
+$password = "50375823";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
