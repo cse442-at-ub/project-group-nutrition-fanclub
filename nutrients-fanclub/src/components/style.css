@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@700&family=Notable&display=swap');
+
 #title {  
     font-family: 'Notable', sans-serif;
 }
@@ -7,29 +8,39 @@ a {
     font-family: 'Kumbh Sans', sans-serif;
 }
 
-.searchbar {
-    right: 100;
+.navbar {
+    /* Your navbar styles */
+    z-index: 2; /* Set a higher z-index value for the navbar */
 }
 
 .sidebar {
-    width: 150px;
+    width: 135px;
     height: 100%;
     background-color: #333;
     color: white;
     position: fixed;
     left: 0;
     padding: 20px;
+    top: 0;
+    z-index: 1; /* Set a lower z-index value for the sidebar */
 }
-  
+
 .sidebar ul {
     list-style: none;
     padding: 0;
 }
-  
+
 .sidebar ul li {
     margin-bottom: 10px;
     cursor: pointer;
 }
+
+/* Add some padding or margin to the content to create space for the fixed sidebar */
+.content {
+    margin-left: 170px; /* Adjust this value as needed to match the width of your sidebar */
+    padding-top: 20px; /* Match the top padding with the sidebar's padding */
+}
+
 
 .dark-mode {
     background-color: #2E6F57;
