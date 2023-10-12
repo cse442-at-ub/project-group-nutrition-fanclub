@@ -19,7 +19,7 @@ function Navbar() {
           <a style={{ padding: 7 }}></a>
           <ul className="navbar-nav mb-2 mb-lg-0">
             <li className="nav-item">
-              <a href="/"><button className="btn btn-light rounded-pill" type="button" style={{ color: "#2E6F57" }}>LOG IN</button></a>
+              <a href="/"><button className="btn btn-light rounded-pill" type="button" style={{ color: "#2E6F57" }}>SIGN IN</button></a>
             </li>
           </ul>
         </div>

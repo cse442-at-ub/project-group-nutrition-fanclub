@@ -6,8 +6,8 @@ function Sidebar() {
       <div className="sidebar">
         <ul>
           <li style={{paddingTop: '20px'}}></li>
-          <li><h4><a>Filter by</a></h4></li>
-          <li style={{paddingTop: '1px'}}></li>
+          <li><h4><a style={{color: '#2E6F57'}}>Filter by</a></h4></li>
+          <hr></hr>
           <li><h5><a>Cuisine</a></h5></li>
           <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="DefaultCheck"></input>
@@ -48,7 +48,7 @@ function Sidebar() {
             <label class="form-check-label" for="DefaultCheck9">Pizza</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="DefaultCheck10"></input>
+            <input class="form-check-input" type="checkbox"  value="" id="DefaultCheck10"></input>
             <label class="form-check-label" for="DefaultCheck10">Platter</label>
           </div>
           <div class="form-check">
