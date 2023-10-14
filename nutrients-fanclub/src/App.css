@@ -1,24 +1,140 @@
-/* App.css */
 .app {
+  width: 1440px;
+  height: 1024px;
+  margin: 0 auto;
+}
+
+header {
+  height: 125px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+header span {
+  font-size: 75px;
+  font-weight: bold;
+  font-family: 'Notable', sans-serif;
+  color: #EEEEEE;
+  margin-top: -20px;
+}
+
+header button {
+  background: none;
+  border: none;
+  margin-right: 15px;
+  cursor: pointer;
+  outline: none;
+}
+
+.toggle {
+  width: 50px;
+  height: 25px;
+  border-radius: 15px;
+  background-color: #CCD1EC;
+  cursor: pointer;
+  position: relative;
+  margin-left: 10px;
+}
+
+.toggle::before {
+  content: "";
+  position: absolute;
+  top: 2.5px;
+  left: 2.5px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: white;
+  transition: all 0.3s;
+}
+
+.dark-mode .toggle::before {
+  left: calc(100% - 22.5px);
+}
+
+main {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  align-items: center;
+  gap: 15px;
+  flex: 1;
+  justify-content: center;
+  margin-top: 150px;
 }
 
-.navbar {
+input {
+  padding: 0px;
+  padding-left: 10px;
+  background-color: #EEEEEE;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: #717171;
+  width: 416px;
+  height: 53px;
+  font-family: 'Kumbh Sans', sans-serif;
+
+}
+
+input[type="password"] {
+  margin-top: 40px;  
+}
+
+.darkmode-label {
+  font-family: 'Kumbh Sans', sans-serif; 
+  font-size: 25px;                       
+  color: white;                          
+  background-color: transparent;         
+  font-weight: 700;                      
+  cursor: pointer;                       
+  display: inline-flex;                   
+  align-items: center;                   
+  margin-right: 20px;                    
+}
+
+.login-btn {
   background-color: #2E6F57;
   color: white;
-  padding: 10px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  width: 426px;
+  height: 53px;
+  margin-top: 40px
 }
 
-.content-container {
-  display: flex;
-  flex-grow: 1;
+.login-button {
+  font-family: 'Kumbh Sans', sans-serif; 
+  font-size: 20px;              
+  color: #2E6F57;                  
+  background-color: white;           
+  border: none;                    
+  padding: 10px 20px;              
+  border-radius: 50px;                
+  cursor: pointer;                    
+  font-weight: 700;
+  transition: background-color 0.3s;   
 }
 
-.content {
-  flex-grow: 1;
-  padding: 20px;
-  background-color: #f4f4f4;
-  overflow-y: auto;
+.home-button {
+  font-family: 'Kumbh Sans', sans-serif; 
+  font-size: 25px;                     
+  color: white;                        
+  background-color: transparent;        
+  border: none;                       
+  font-weight: 700;                     
+  cursor: pointer;                      
+  margin-right: 20px;                   
+}
+
+a {
+  color: #2E6F57;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a:hover {
+  text-decoration: underline;
 }
