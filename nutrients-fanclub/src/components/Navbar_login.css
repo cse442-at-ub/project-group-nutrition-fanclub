@@ -1,0 +1,108 @@
+.navbar-login {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 125px;
+    background-color: #2E6F57;
+    padding: 0 50px;
+    box-sizing: border-box;
+}
+
+.navbar-login-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.navbar-login-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.navbar-title {
+    font-family: 'Notable', sans-serif;
+    font-size: 75px;
+    color: white;
+    margin-top: -20px;
+}
+
+.navbar-text {
+    font-family: 'Kumbh Sans', sans-serif;
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
+}
+
+.home-button {
+    font-family: 'Kumbh Sans', sans-serif; 
+    font-size: 25px;                     
+    color: white;                        
+    background-color: transparent;        
+    border: none;                       
+    font-weight: 700;                     
+    cursor: pointer;                      
+  }
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+input:checked + .slider {
+    background-color: #ccc;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.login-button {
+    font-family: 'Kumbh Sans', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: #2E6F57;
+    background-color: white;
+    border-radius: 50px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: background-color 0.3s ease;
+    margin-right: -10px;
+}
+

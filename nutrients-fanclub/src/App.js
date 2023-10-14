@@ -1,39 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
-import Navbar from './components/Navbar';
-import Restaurants from './components/Restaurants';
-import Searchbar from './components/Searchbar';
-import Settingsbutton from './components/Settingsbutton';
-import Sidebar from './components/Sidebar';
+import Navbar_login from './components/Navbar_login';
+import Input_login from './components/Input_login';
+import Bigbutton_login from './components/Bigbutton_login';
+import Content_login from './components/Content_login';
+
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
-  const toggleDarkMode = () => setDarkMode(!darkMode);
-
   return (
-      <div className={`app ${darkMode ? 'dark-mode' : ''}`}>
-          <header style={{ backgroundColor: '#2E6F57' }}>
-              <span>UGRUB</span>
-              <div class="button-container">
-                  <label class="darkmode-label">Dark
-                  <div className="toggle" onClick={toggleDarkMode}></div>
-                  </label>    
-                  <button class="home-button">HOME</button>
-                  <button class="login-button">LOG IN</button>
-              </div>
-          </header>
-          <main>
-              <input placeholder="Usename/Email address" />
-              <input type="password" placeholder="Password" />
-              <button className="login-btn">LOGIN</button>
-              <div>
-                  <span>Not registered? </span><a href="#">Create an account</a>
-              </div>
-              <div>
-                  <a href="#">Forget Password?</a>
-              </div>
-          </main>
+    <div class="App">
+      <Navbar_login />
+      <div className='app-container'>
+        <Input_login placeholder="Username/Email address"/>
+        <Input_login placeholder="Password" type="password"/>
+        <Bigbutton_login/>
+        <Content_login/>
       </div>
+      {/* Your content goes here */}
+    </div>
   );
 }
 

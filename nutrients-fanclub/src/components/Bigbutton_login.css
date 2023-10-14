@@ -1,0 +1,15 @@
+.login-btn {
+  font-family: 'Kumbh Sans', sans-serif; 
+  background-color: #2E6F57;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  width: 426px;
+  height: 53px;
+  margin-top: 10px  
+}
+
+.login-btn:hover {
+    background-color: #245944;
+}
