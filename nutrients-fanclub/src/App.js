@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import displayModesImage from './Assets/display-modes.png';
-import userImage from './Assets/user.png';
+import displayModesImage from './Components/display-modes.png';
+import userImage from './Components/user.png';
 
 function Signup() {
     return (
