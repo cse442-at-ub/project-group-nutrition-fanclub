@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './style.css';
 
 function Navbar() {
@@ -13,13 +14,15 @@ function Navbar() {
         <div className="d-flex align-items-center">
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0" style={{ whiteSpace: 'nowrap' }}>
             <li className="nav-item">
-              <a className="nav-link" href="/">HOME</a>
+              <Link to="/" className="custom-link">HOME</Link>
             </li>
           </ul>
           <a style={{ padding: 7 }}></a>
           <ul className="navbar-nav mb-2 mb-lg-0">
             <li className="nav-item">
-              <a href="/"><button className="btn btn-light rounded-pill" type="button" style={{ color: "#2E6F57" }}>SIGN IN</button></a>
+              <Link to="/login">
+                <button className="btn btn-light rounded-pill" type="button" style={{ color: "#2E6F57" }}>SIGN IN</button>
+              </Link>
             </li>
           </ul>
         </div>

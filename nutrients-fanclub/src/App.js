@@ -1,21 +1,20 @@
 import React from 'react';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import './App.css';
+import Home from './components/Home';
+import Login from './components/Login';
 import Navbar from './components/Navbar';
-import Restaurants from './components/Restaurants';
-import Searchbar from './components/Searchbar';
-import Settingsbutton from './components/Settingsbutton';
-import Sidebar from './components/Sidebar';
 
 function App() {
   return (
-    <div class="App">
-      <Navbar />
-      <Sidebar />
-      <Searchbar />
-      <div className="container">
-        <Restaurants />
-      </div>
-      <Settingsbutton />
+    <div className="App">
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </Router>
     </div>
   );
 }

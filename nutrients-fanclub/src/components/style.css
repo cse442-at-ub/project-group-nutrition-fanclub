@@ -10,8 +10,18 @@ a {
 
 .navbar {
     /* Your navbar styles */
-    z-index: 2; /* Set a higher z-index value for the navbar */
+    z-index: 2; /*   Set a higher z-index value for the navbar */
 }
+
+.custom-link {
+    text-decoration: none;
+    transition: color 0.3s;
+    color: white;
+}
+
+.custom-link:hover {
+    color: gray; /* Darker color on hover */
+  }
 
 .sidebar {
     width: 135px;
