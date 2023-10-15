@@ -12,9 +12,10 @@ function App() {
       <Navbar />
       <Sidebar />
       <Searchbar />
-      <Restaurants />
+      <div className="container">
+        <Restaurants />
+      </div>
       <Settingsbutton />
-      {/* Your content goes here */}
     </div>
   );
 }
