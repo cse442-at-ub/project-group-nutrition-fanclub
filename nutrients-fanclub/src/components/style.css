@@ -9,6 +9,10 @@ a {
 }
 
 .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     /* Your navbar styles */
     z-index: 2; /*   Set a higher z-index value for the navbar */
 }
@@ -23,7 +27,7 @@ a {
     color: gray; /* Darker color on hover */
   }
 
-.sidebar {
+  .sidebar {
     width: 135px;
     height: 100%;
     background-color: #333;
@@ -32,8 +36,9 @@ a {
     left: 0;
     padding: 20px;
     top: 0;
-    z-index: 1; /* Set a lower z-index value for the sidebar */
-}
+    z-index: 1;
+    overflow-y: auto; /* Add this to enable vertical scrolling */
+  }
 
 .sidebar ul {
     list-style: none;
@@ -44,6 +49,10 @@ a {
     margin-bottom: 10px;
     cursor: pointer;
 }
+
+.sidebar-content {
+    max-height: 100%; /* Adjust the max height as needed */
+  }
 
 /* Add some padding or margin to the content to create space for the fixed sidebar */
 .content {

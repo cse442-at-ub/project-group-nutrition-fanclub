@@ -4,15 +4,18 @@ import './App.css';
 import Home from './components/Home';
 import Login from './components/Login';
 import Navbar from './components/Navbar';
+import Signup from './components/Signup';
 
 function App() {
   return (
     <div className="App">
       <Router>
         <Navbar />
+        <div style={{paddingTop: 100}}></div>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
         </Routes>
       </Router>
     </div>

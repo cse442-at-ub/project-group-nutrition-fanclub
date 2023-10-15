@@ -1,14 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Content_login.css';
 
 function Content_login(props) {
     return (
         <div className="word">
             <p>
-                Not registered? <a href="#">Create an account</a>
+                Not registered? <Link to="/signup">Create an account</Link>
             </p>
             <p>
-                <a href="#">Forgot Password?</a>
+                <a href='#'>Forgot Password?</a>
             </p>
         </div>
     );
