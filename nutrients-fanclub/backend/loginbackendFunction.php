@@ -1,12 +1,12 @@
 <?php
 function hash_encode($password) {
-    // 
+    // hash
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
     return $hashed_password;
 }
 
 function hash_decode($password, $hashed_password) {
-    // 
+    // X
     if(password_verify($password, $hashed_password) == 1){
         echo "The password is vaild";
         echo "<br>";
@@ -37,12 +37,13 @@ function isValidInput($input) {
 }
 
 function containsNumberAndLetter($input) {
+    //is number and letter?
     return preg_match('/[A-Za-z]/', $input) && preg_match('/[0-9]/', $input);
 }
 
 function checkPasswordValidity($input) {
-    // 
-    return preg_match('/^[A-Za-z0-9]+$/', $input) ? "Valid" : "Password incorrect";
+    // only number and letter
+    return preg_match('/^[A-Za-z0-9]+$/', $input) ? "Valid" : "Password invalid";
 }
 
 

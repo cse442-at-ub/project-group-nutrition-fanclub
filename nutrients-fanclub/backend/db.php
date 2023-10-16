@@ -1,8 +1,9 @@
 <?php
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 $servername = "oceanus.cse.buffalo.edu";
-$dbname = "cse442_2023_fall_team_ae_db";
 $username = "haobowan";
 $password = "50375823";
+$dbname = "cse442_2023_fall_team_ae_db";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);

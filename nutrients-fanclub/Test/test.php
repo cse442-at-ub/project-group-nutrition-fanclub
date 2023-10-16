@@ -75,7 +75,7 @@
         echo "<br/>";
 }
 
-$tests = ["Valid123", "INVALID!", "AnotherValidOne456", "12345", "abcABC"];
+$tests = ["Valid123", "INVALID!", "AnotherValidOne456", "12345", "abcABC","中文"];
 echo "<br/>";
 foreach ($tests as $test) {
     echo "Testing '$test': ";
