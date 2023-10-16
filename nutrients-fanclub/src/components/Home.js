@@ -1,7 +1,6 @@
 import React from 'react';
 import Restaurants from './Restaurants';
 import Searchbar from './Searchbar';
-import Settingsbutton from './Settingsbutton';
 import Sidebar from './Sidebar';
 
 function Home() {
@@ -12,7 +11,6 @@ function Home() {
       <div className="container">
         <Restaurants />
       </div>
-      <Settingsbutton />
     </div>
   );
 }

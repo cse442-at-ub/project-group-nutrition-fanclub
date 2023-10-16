@@ -24,11 +24,11 @@ a {
 }
 
 .custom-link:hover {
-    color: gray; /* Darker color on hover */
-  }
+    color: rgb(215, 215, 215); /* Darker color on hover */
+}
 
-  .sidebar {
-    width: 135px;
+.sidebar {
+    width: 150px;
     height: 100%;
     background-color: #333;
     color: white;
@@ -38,7 +38,7 @@ a {
     top: 0;
     z-index: 1;
     overflow-y: auto; /* Add this to enable vertical scrolling */
-  }
+}
 
 .sidebar ul {
     list-style: none;

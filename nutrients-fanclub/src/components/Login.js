@@ -1,8 +1,7 @@
 import React from "react";
-import Bigbutton_login from './Bigbutton_login';
+import Bigbutton from './Bigbutton';
 import Content_login from './Content_login';
 import Input_login from './Input_login';
-import Settingsbutton from "./Settingsbutton";
 
 function Login() {
     return (
@@ -10,9 +9,8 @@ function Login() {
             <div className='app-container'>
                 <Input_login placeholder="Username/Email address"/>
                 <Input_login placeholder="Password" type="password"/>
-                <Bigbutton_login/>
+                <Bigbutton text="LOGIN" />
                 <Content_login/>
-                <Settingsbutton />
             </div>
         </div>
     );

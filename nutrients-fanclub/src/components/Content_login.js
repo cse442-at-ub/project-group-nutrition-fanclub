@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Content_login.css';
 
-function Content_login(props) {
+function Content_login() {
     return (
         <div className="word">
             <p>
