@@ -15,9 +15,9 @@ function App() {
         <Settingsbutton />
         <div style={{paddingTop: 100}}></div>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
+          <Route path="/CSE442-542/2023-Fall/cse-442ae/build/" element={<Home />} />
+          <Route path="/CSE442-542/2023-Fall/cse-442ae/build/login" element={<Login />} />
+          <Route path="/CSE442-542/2023-Fall/cse-442ae/build/signup" element={<Signup />} />
         </Routes>
       </Router>
     </div>

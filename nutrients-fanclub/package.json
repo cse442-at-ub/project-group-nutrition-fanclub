@@ -1,5 +1,6 @@
 {
   "name": "nutrients-fanclub",
+  "homepage": "/CSE442-542/2023-Fall/cse-442ae/build",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
