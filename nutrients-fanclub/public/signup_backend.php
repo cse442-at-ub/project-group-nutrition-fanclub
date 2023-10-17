@@ -1,4 +1,4 @@
-<?php
+$<?php
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
 // Function to establish a database connection
@@ -20,8 +20,8 @@ function connectToDatabase() {
 // Function to create the 'users' table
 function createUsersTable() {
     $mysqli = connectToDatabase();
-    // SQL statement to create the 'users' table
-    $sql = "CREATE TABLE IF NOT EXISTS users (
+// SQL statement to create the 'users' table
+    $sql = "CREATE TABLE IF NOT EXISTS usersinfo (
         id INT AUTO_INCREMENT PRIMARY KEY,
         username VARCHAR(255) NOT NULL,
         password VARCHAR(255) NOT NULL,
@@ -33,34 +33,35 @@ function createUsersTable() {
         echo "Table 'users' created successfully!";
     } else {
         echo "Error creating table: " . $mysqli->error;
-    }
 
-    $mysqli->close();
+}
+
+$mysqli->close();
 }
 
 // Function to add a new user to the database
 function addUser($username, $password, $email, $favoriteRestaurant) {
-    $mysqli = connectToDatabase();
+$mysqli = connectToDatabase();
 
-    // Hash the password for security
-    $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+// Hash the password for security
+$hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
-    // Prepare the SQL statement
-    $stmt = $mysqli->prepare("INSERT INTO users (username, password, email, favorite_restaurant) VALUES (?, ?, ?, ?)");
+// Prepare the SQL statement
+$stmt = $mysqli->prepare("INSERT INTO usersinfo (username, password, email, favorite_restaurant) VALUES (?, ?, ?, ?)");
 
-    // Bind parameters
-    $stmt->bind_param("ssss", $username, $hashedPassword, $email, $favoriteRestaurant);
+// Bind parameters
+$stmt->bind_param("ssss", $username, $hashedPassword, $email, $favoriteRestaurant);
 
-    // Execute the statement
-    if ($stmt->execute()) {
-        echo "User registration successful!";
-    } else {
-        echo "Error: " . $stmt->error;
-    }
+// Execute the statement
+if ($stmt->execute()) {
+    echo "User registration successful!";
+} else {
+    echo "Error: " . $stmt->error;
+}
 
-    // Close the statement and database connection
-    $stmt->close();
-    $mysqli->close();
+// Close the statement and database connection
+$stmt->close();
+$mysqli->close();
 }
 
 // Call the createUsersTable function to create the 'users' table
