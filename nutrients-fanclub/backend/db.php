@@ -1,6 +1,6 @@
 <?php
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-
+//this script is for db connection, the signup_storeinDB.php file doesn't import this because i wrote the databse connection in there anyway- ryan
 // Function to establish a database connection
 function connectToDatabase() {   
     $host = "oceanus.cse.buffalo.edu"; // 

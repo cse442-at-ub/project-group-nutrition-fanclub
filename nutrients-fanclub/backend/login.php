@@ -1,15 +1,15 @@
 <?php
 include "db.php";
 
-
+//this script is for login
 function hash_encode($password) {
-    // 
+    //The hash_encode function uses the password_hash function to hash the provided password. It returns the hashed password.
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
     return $hashed_password;
 }
 
 function hash_decode($password, $hashed_password) {
-    // 
+    // The hash_decode function takes a password and a hashed password as parameters. It uses password_verify to check whether the provided password matches the hashed password. If the password is valid, it returns true; otherwise, it returns false.
     if(password_verify($password, $hashed_password) == 1){
         echo "The password is vaild";
         echo "<br>";
