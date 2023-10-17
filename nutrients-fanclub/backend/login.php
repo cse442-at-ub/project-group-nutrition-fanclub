@@ -1,5 +1,7 @@
 <?php
 include "db.php";
+
+
 function hash_encode($password) {
     // 
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
