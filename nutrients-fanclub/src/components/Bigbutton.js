@@ -1,10 +1,10 @@
 import React from 'react';
 import './Bigbutton.css';
 
-function Bigbutton(props) {
+function Bigbutton({ text, onClick }) {
     return (
-        <button className="login-btn">
-            {props.text}
+        <button onClick={onClick} className="login-btn">
+            {text}
         </button>
     );
 }
