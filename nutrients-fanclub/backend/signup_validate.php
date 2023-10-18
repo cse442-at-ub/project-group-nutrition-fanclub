@@ -1,4 +1,5 @@
 <?php
+//these functions validate whethor or not the created passwords are valid.
 function hash_encode($password) {
     // hash
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
