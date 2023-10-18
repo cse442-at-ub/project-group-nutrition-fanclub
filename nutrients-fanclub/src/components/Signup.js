@@ -1,20 +1,60 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 import Bigbutton from './Bigbutton';
 import Content_signup from "./Content_signup";
 import Input_login from './Input_login';
 
 function Signup() {
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [favoriteRestaurant, setFavoriteRestaurant] = useState("");
+    const [academicYear, setAcademicYear] = useState("");
+
+    const validatePasswordAndSignUp = () => {
+        const userData = {
+            username: username,
+            password: password,
+            email: email,
+            favoriteRestaurant: favoriteRestaurant
+        };
+
+        // First, validate the password
+        axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend_updated/signup_validate.php', { password: password })
+            .then(response => {
+                if (response.data === "Valid") {
+                    // If the password is valid, then store the user information
+                    axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend_updated/signup_storeinDB.php', userData)
+                        .then(response => {
+                            console.log(response.data);
+                            // handle success scenario
+                        })
+                        .catch(error => {
+                            console.log(error);
+                            // handle error scenario
+                        });
+                } else {
+                    console.log("Password validation failed");
+                    // handle password validation failure
+                }
+            })
+            .catch(error => {
+                console.log(error);
+                // handle error scenario
+            });
+    };
+
     return (
         <div>
-            <div className='app-container' style={{paddingTop: 150}}>
+            <div className='app-container' style={{ paddingTop: 150 }}>
                 <span>
-                    <Input_login placeholder="Username"/>
-                    <Input_login placeholder="Email address"/>
-                    <Input_login placeholder="Password" type="password"/>
-                    <Input_login placeholder="Favorite Restaurant"/>    
-                    <Input_login placeholder="Academic Year" type="number"/>
+                    <Input_login placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
+                    <Input_login placeholder="Email address" value={email} onChange={(e) => setEmail(e.target.value)} />
+                    <Input_login placeholder="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                    <Input_login placeholder="Favorite Restaurant" value={favoriteRestaurant} onChange={(e) => setFavoriteRestaurant(e.target.value)} />
+                    <Input_login placeholder="Academic Year" type="number" value={academicYear} onChange={(e) => setAcademicYear(e.target.value)} />
                 </span>
-                <Bigbutton text="CREATE" />
+                <Bigbutton text="CREATE" onClick={validatePasswordAndSignUp} />
                 <Content_signup />
             </div>
         </div>
