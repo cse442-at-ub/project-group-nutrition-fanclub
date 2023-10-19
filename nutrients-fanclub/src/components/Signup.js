@@ -1,5 +1,6 @@
-import React, { useState } from "react";
 import axios from "axios";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Bigbutton from './Bigbutton';
 import Content_signup from "./Content_signup";
 import Input_login from './Input_login';
@@ -52,9 +53,8 @@ function Signup() {
                     <Input_login placeholder="Email address" value={email} onChange={(e) => setEmail(e.target.value)} />
                     <Input_login placeholder="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                     <Input_login placeholder="Favorite Restaurant" value={favoriteRestaurant} onChange={(e) => setFavoriteRestaurant(e.target.value)} />
-                    <Input_login placeholder="Academic Year" type="number" value={academicYear} onChange={(e) => setAcademicYear(e.target.value)} />
                 </span>
-                <Bigbutton text="CREATE" onClick={validatePasswordAndSignUp} />
+                <Link to='/CSE442-542/2023-Fall/cse-442ae/build/login'><Bigbutton text="CREATE" onClick={validatePasswordAndSignUp} /></Link>
                 <Content_signup />
             </div>
         </div>
