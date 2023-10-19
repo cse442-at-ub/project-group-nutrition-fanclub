@@ -1,0 +1,21 @@
+.word {
+    margin-top: 30px;
+}
+
+.word p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.word a {
+    color: #2E6F57;
+    text-decoration: none;
+}
+
+.word a:hover {
+    text-decoration: underline;
+}
+
+.word p:last-child {
+    text-align: center;
+}

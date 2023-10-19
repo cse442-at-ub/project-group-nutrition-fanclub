@@ -9,12 +9,26 @@ a {
 }
 
 .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     /* Your navbar styles */
-    z-index: 2; /* Set a higher z-index value for the navbar */
+    z-index: 2; /*   Set a higher z-index value for the navbar */
+}
+
+.custom-link {
+    text-decoration: none;
+    transition: color 0.3s;
+    color: white;
+}
+
+.custom-link:hover {
+    color: rgb(215, 215, 215); /* Darker color on hover */
 }
 
 .sidebar {
-    width: 135px;
+    width: 150px;
     height: 100%;
     background-color: #333;
     color: white;
@@ -22,7 +36,8 @@ a {
     left: 0;
     padding: 20px;
     top: 0;
-    z-index: 1; /* Set a lower z-index value for the sidebar */
+    z-index: 1;
+    overflow-y: auto; /* Add this to enable vertical scrolling */
 }
 
 .sidebar ul {
@@ -34,6 +49,10 @@ a {
     margin-bottom: 10px;
     cursor: pointer;
 }
+
+.sidebar-content {
+    max-height: 100%; /* Adjust the max height as needed */
+  }
 
 /* Add some padding or margin to the content to create space for the fixed sidebar */
 .content {
