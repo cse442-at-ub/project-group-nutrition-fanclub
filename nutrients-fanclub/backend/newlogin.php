@@ -26,7 +26,7 @@ function getUser($mysqli, $username, $password)
              // Set a cookie for one day
              $cookie_name = 'currentUserCookie';
              setcookie($cookie_name, $user['id'], time() + 86400, "/");
-             return ["status" => "success", "message" => "Account Verified"];
+             return ["status" => "Login successfully", "message" => "Account Verified"];
          } else {
              return ["status" => "error", "message" => "Wrong Password"];
          }
