@@ -10,9 +10,8 @@ function Signup() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [favoriteRestaurant, setFavoriteRestaurant] = useState("");
-    const [academicYear, setAcademicYear] = useState("");
 
-    const validatePasswordAndSignUp = () => {
+    const signUpUser = () => {
         const userData = {
             username: username,
             password: password,
@@ -20,24 +19,11 @@ function Signup() {
             favoriteRestaurant: favoriteRestaurant
         };
 
-        // First, validate the password
-        axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend_updated/signup_validate.php', { password: password })
+        // Store the user information
+        axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend_updated/signup_storeinDB.php', userData)
             .then(response => {
-                if (response.data === "Valid") {
-                    // If the password is valid, then store the user information
-                    axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend_updated/signup_storeinDB.php', userData)
-                        .then(response => {
-                            console.log(response.data);
-                            // handle success scenario
-                        })
-                        .catch(error => {
-                            console.log(error);
-                            // handle error scenario
-                        });
-                } else {
-                    console.log("Password validation failed");
-                    // handle password validation failure
-                }
+                console.log(response.data);
+                // handle success scenario
             })
             .catch(error => {
                 console.log(error);
@@ -54,7 +40,7 @@ function Signup() {
                     <Input_login placeholder="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                     <Input_login placeholder="Favorite Restaurant" value={favoriteRestaurant} onChange={(e) => setFavoriteRestaurant(e.target.value)} />
                 </span>
-                <Link to='/CSE442-542/2023-Fall/cse-442ae/build/login'><Bigbutton text="CREATE" onClick={validatePasswordAndSignUp} /></Link>
+                <Link to='/CSE442-542/2023-Fall/cse-442ae/build/login'><Bigbutton text="CREATE" onClick={signUpUser} /></Link>
                 <Content_signup />
             </div>
         </div>
