@@ -38,11 +38,10 @@ function Login() {
     const submit = async() => {
         if (validateInput()) {
             try {
-                const response = await axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend_updated/newlogin.php', {username, password});
-
-                if (response.data === 'Login successfully') {
+                const response = await axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend/newlogin.php', {username, password});
+                if (response.data.status === 'Login successfully') {
                     console.log('Login successfully');
-                    window.location.href = '/CSE442-542/2023-Fall/cse-442ae/build/signup'
+                    window.location.href = '/CSE442-542/2023-Fall/cse-442ae/build/';
                     setError('');
                 } else {
                     setError('Make sure you have the correct username/email and password');
