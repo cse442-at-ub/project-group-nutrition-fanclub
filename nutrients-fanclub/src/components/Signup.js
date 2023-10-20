@@ -1,4 +1,4 @@
-import axios from "axios";
+import Axios from "axios";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Bigbutton from './Bigbutton';
@@ -11,7 +11,9 @@ function Signup() {
     const [password, setPassword] = useState("");
     const [favoriteRestaurant, setFavoriteRestaurant] = useState("");
 
-    const signUpUser = () => {
+    const signUpUser = (event) => {
+        event.preventDefault();  // This will prevent the default action of the Link
+
         const userData = {
             username: username,
             password: password,
@@ -20,14 +22,20 @@ function Signup() {
         };
 
         // Store the user information
-        axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend_updated/signup_storeinDB.php', userData)
+        Axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend_updadated_new/signupv3.php', userData)
             .then(response => {
-                console.log(response.data);
-                // handle success scenario
+                if (response.data.status === 1) {
+                    console.log("send success");
+                    // Handle successful registration. For instance, you might navigate the user to the login page or show a success message.
+                } else if (response.data.status === 0) {
+                    console.log("Error:", response.data.message);
+                    console.log("Validation Issues:", response.data.errors);
+                    // Handle the errors, for instance, show an error message to the user.
+                }
             })
             .catch(error => {
                 console.log(error);
-                // handle error scenario
+                // Handle network errors or unexpected issues.
             });
     };
 
@@ -40,7 +48,9 @@ function Signup() {
                     <Input_login placeholder="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                     <Input_login placeholder="Favorite Restaurant" value={favoriteRestaurant} onChange={(e) => setFavoriteRestaurant(e.target.value)} />
                 </span>
-                <Link to='/CSE442-542/2023-Fall/cse-442ae/build/login'><Bigbutton text="CREATE" onClick={signUpUser} /></Link>
+                <Link to='/CSE442-542/2023-Fall/cse-442ae/build/login' onClick={signUpUser}>
+                    <Bigbutton text="CREATE" />
+                </Link>
                 <Content_signup />
             </div>
         </div>
