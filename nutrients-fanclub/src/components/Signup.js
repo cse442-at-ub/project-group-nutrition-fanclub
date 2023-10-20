@@ -26,7 +26,7 @@ function Signup() {
             favoriteRestaurant: favoriteRestaurant
         };
 
-        axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend_updated/signup_storeinDB.php', userData)
+        axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend_updadated_new/signup.php', userData)
             .then(response => {
                 const response_json = JSON.parse(response.data.substring(1));
                 if (response_json.status === 0) {
