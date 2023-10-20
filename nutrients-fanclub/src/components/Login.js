@@ -3,14 +3,16 @@ import Bigbutton from './Bigbutton';
 import Content_login from './Content_login';
 import Input_login from './Input_login';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 
-function Login() {
+function Login({handleLogin}) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [usernameError, setUsernameError] = useState('');
     const [passwordError, setPasswordError] = useState('');
     const [error, setError] = useState('');
+    const navigate = useNavigate();
 
     const validateInput = () => {
         let isValid = true;
@@ -41,7 +43,10 @@ function Login() {
                 const response = await axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend/newlogin.php', {username, password});
                 if (response.data.status === 'Login successfully') {
                     console.log('Login successfully');
-                    window.location.href = '/CSE442-542/2023-Fall/cse-442ae/build/';
+
+                    handleLogin();
+
+                    navigate('/CSE442-542/2023-Fall/cse-442ae/build/');
                     setError('');
                 } else {
                     setError('Make sure you have the correct username/email and password');

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import './App.css';
 import Home from './components/Home';
@@ -8,15 +8,32 @@ import Settingsbutton from './components/Settingsbutton';
 import Signup from './components/Signup';
 
 function App() {
+  const [isLogin, setisLogin] = useState(false);
+
+  const handleLogin = () => {
+    setisLogin(true);
+    localStorage.setItem('isLogin', 'true');
+  };
+
+  useEffect(() => {
+    const loggedIn = localStorage.getItem('isLoggedIn'); 
+    setisLogin(loggedIn === 'true');
+  },[]);
+
+  const handleLogout = () => {
+    setisLogin(false);
+    localStorage.removeItem('isLoggedIn');
+  };
+
   return (
     <div className="App">
       <Router>
-        <Navbar />
+        <Navbar isLogin={isLogin} handleLogout={handleLogout}/>
         <Settingsbutton />
         <div style={{paddingTop: 100}}></div>
         <Routes>
           <Route path="/CSE442-542/2023-Fall/cse-442ae/build/" element={<Home />} />
-          <Route path="/CSE442-542/2023-Fall/cse-442ae/build/login" element={<Login />} />
+          <Route path="/CSE442-542/2023-Fall/cse-442ae/build/login" element={<Login handleLogin={handleLogin} />} />
           <Route path="/CSE442-542/2023-Fall/cse-442ae/build/signup" element={<Signup />} />
         </Routes>
       </Router>
