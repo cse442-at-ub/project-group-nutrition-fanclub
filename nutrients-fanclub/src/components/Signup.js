@@ -24,10 +24,10 @@ function Signup() {
         // Store the user information
         Axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend_updadated_new/signupv3.php', userData)
             .then(response => {
-                if (response.data.status === 1) {
+                if (response.data.status == 1) {
                     console.log("send success");
                     // Handle successful registration. For instance, you might navigate the user to the login page or show a success message.
-                } else if (response.data.status === 0) {
+                } else if (response.data.status == 0) {
                     console.log("Error:", response.data.message);
                     console.log("Validation Issues:", response.data.errors);
                     // Handle the errors, for instance, show an error message to the user.
