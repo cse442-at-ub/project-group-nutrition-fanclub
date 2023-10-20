@@ -10,13 +10,6 @@ function Signup() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [favoriteRestaurant, setFavoriteRestaurant] = useState("");
-    const [errors, setErrors] = useState({
-        username: '',
-        email: '',
-        password: '',
-        favoriteRestaurant: '',
-        submit: ''
-    });
 
     const signUpUser = () => {
         const userData = {
@@ -26,34 +19,16 @@ function Signup() {
             favoriteRestaurant: favoriteRestaurant
         };
 
+        // Store the user information
         axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend_updadated_new/signup.php', userData)
             .then(response => {
-                const response_json = JSON.parse(response.data.substring(1));
-                if (response_json.status === 0) {
-                    const error = response_json.errors;
-                    let allErrors = {};
-                    for (const field in error) {
-                        allErrors[field] = error[field];
-                    }
-                    setErrors({ ...allErrors, submit: 'Unable to create account, please check all fields' });
-                    console.log("Unable to create account, please check all fields");
-                } else {
-                    setErrors({
-                        username: '',
-                        email: '',
-                        password: '',
-                        favoriteRestaurant: '',
-                        submit: ''
-                    });
-                    console.log("User registration successful!");
-                    // Uncomment the next line if you want to navigate after successful registration
-                    // navigate('/CSE442-542/2023-Fall/cse-442ae/build/login');
-                }
+                console.log(response.data);
+                console.log("send success")
+                // handle success scenario
             })
             .catch(error => {
                 console.log(error);
-                setErrors({ ...errors, submit: 'An error occurred. Please try again later.' });
-                console.log("An error occurred. Please try again later.");
+                // handle error scenario
             });
     };
 
