@@ -11,9 +11,6 @@ function Signup() {
     const [password, setPassword] = useState("");
     const [favoriteRestaurant, setFavoriteRestaurant] = useState("");
 
-    const [errorMessages, setErrorMessages] = useState({});
-
-
     const signUpUser = (event) => {
         event.preventDefault();  // This will prevent the default action of the Link
 
@@ -27,14 +24,18 @@ function Signup() {
         // Store the user information
         Axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend_updadated_new/signupv3.php', userData)
             .then(response => {
-                console.log(response.data);
-                console.log("send success");
-                // After success, you can programmatically navigate or just let the Link do its work
+                if (response.data.status === 1) {
+                    console.log("send success");
+                    // Handle successful registration. For instance, you might navigate the user to the login page or show a success message.
+                } else if (response.data.status === 0) {
+                    console.log("Error:", response.data.message);
+                    console.log("Validation Issues:", response.data.errors);
+                    // Handle the errors, for instance, show an error message to the user.
+                }
             })
             .catch(error => {
                 console.log(error);
-                // handle error scenario
-                console.log("send fail")
+                // Handle network errors or unexpected issues.
             });
     };
 
