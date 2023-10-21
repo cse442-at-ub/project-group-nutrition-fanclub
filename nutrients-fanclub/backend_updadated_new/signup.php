@@ -44,22 +44,22 @@ switch ($method) {
         
         if ($count > 0) {
             $errors['email'] = 'Email address already exists';
-        }
-        if (!preg_match('/^[\w\s]+$/', $user->username)) {
-            $errors['username'] = 'Username should only contain alphanumeric characters, underscores, and spaces';
-        }
-        if (!filter_var($user->email, FILTER_VALIDATE_EMAIL)) {
-            $errors['email'] = 'Invalid email address';
-        }
-        if (strlen($user->password) < 8) {
-            $errors['password'] = 'Password should be at least 8 characters long';
-        }
+         }
+        // if (!preg_match('/^[\w\s]+$/', $user->username)) {
+        //     $errors['username'] = 'Username should only contain alphanumeric characters, underscores, and spaces';
+        // }
+        // if (!filter_var($user->email, FILTER_VALIDATE_EMAIL)) {
+        //     $errors['email'] = 'Invalid email address';
+        // }
+        // if (strlen($user->password) < 8) {
+        //     $errors['password'] = 'Password should be at least 8 characters long';
+        // }
         
-        if (count($errors) > 0) {
-            $response = ['status' => 0, 'message' => 'Input validation failed', 'errors' => $errors];
-            echo json_encode($response);
-            exit();
-        } else {
+        // if (count($errors) > 0) {
+        //     $response = ['status' => 0, 'message' => 'Input validation failed', 'errors' => $errors];
+        //     echo json_encode($response);
+        //     exit();
+        // } else {
             $sql = "INSERT INTO usersinfo (username, password, email, favorite_restaurant) VALUES (:username, :password, :email, :favoriteRestaurant)";
             $param = $conn->prepare($sql);
             $param->bindParam(':username', $user->username);
@@ -75,7 +75,7 @@ switch ($method) {
             }
             
             echo json_encode($response);
-        }
+        
         break;
 }
 
