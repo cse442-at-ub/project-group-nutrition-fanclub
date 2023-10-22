@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@700&family=Notable&display=swap');
+
+#title {  
+    font-family: 'Notable', sans-serif;
+}
+
+a {
+    font-family: 'Kumbh Sans', sans-serif;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    /* Your navbar styles */
+    z-index: 2; /*   Set a higher z-index value for the navbar */
+}
+
+.custom-link {
+    text-decoration: none;
+    transition: color 0.3s;
+    color: white;
+}
+
+.custom-link:hover {
+    color: rgb(215, 215, 215); /* Darker color on hover */
+}
+
+.sidebar {
+    width: 150px;
+    height: 100%;
+    background-color: #333;
+    color: white;
+    position: fixed;
+    left: 0;
+    padding: 20px;
+    top: 0;
+    z-index: 1;
+    overflow-y: auto; /* Add this to enable vertical scrolling */
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.sidebar-content {
+    max-height: 100%; /* Adjust the max height as needed */
+  }
+
+/* Add some padding or margin to the content to create space for the fixed sidebar */
+.content {
+    margin-left: 170px; /* Adjust this value as needed to match the width of your sidebar */
+    padding-top: 20px; /* Match the top padding with the sidebar's padding */
+}

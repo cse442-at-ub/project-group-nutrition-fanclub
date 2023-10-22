@@ -1,23 +1,42 @@
-import logo from './logo.svg';
+import React, {useEffect, useState} from 'react';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import './App.css';
+import Home from './components/Home';
+import Login from './components/Login';
+import Navbar from './components/Navbar';
+import Settingsbutton from './components/Settingsbutton';
+import Signup from './components/Signup';
 
 function App() {
+  const [isLogin, setisLogin] = useState(false);
+
+  const handleLogin = () => {
+    setisLogin(true);
+    localStorage.setItem('isLogin', 'true');
+  };
+
+  useEffect(() => {
+    const loggedIn = localStorage.getItem('isLoggedIn'); 
+    setisLogin(loggedIn === 'true');
+  },[]);
+
+  const handleLogout = () => {
+    setisLogin(false);
+    localStorage.removeItem('isLoggedIn');
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Navbar isLogin={isLogin} handleLogout={handleLogout}/>
+        <Settingsbutton />
+        <div style={{paddingTop: 100}}></div>
+        <Routes>
+          <Route path="/CSE442-542/2023-Fall/cse-442ae/build/" element={<Home />} />
+          <Route path="/CSE442-542/2023-Fall/cse-442ae/build/login" element={<Login handleLogin={handleLogin} />} />
+          <Route path="/CSE442-542/2023-Fall/cse-442ae/build/signup" element={<Signup />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
