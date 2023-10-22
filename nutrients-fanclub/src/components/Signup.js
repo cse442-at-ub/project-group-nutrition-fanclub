@@ -38,10 +38,10 @@ function Signup() {
                     setErrors(response.data.errors);
                 }
             })
-            .catch(error => {
-                console.log(error, 'catch the hoop');
-                setGenericError('Something went wrong. Please try again.');
-            });
+            // .catch(error => {
+            //     console.log(error, 'catch the hoop');
+            //     setGenericError('Something went wrong. Please try again.');
+            // });
     };
 
     return (
