@@ -16,6 +16,7 @@ function Signup() {
     const [genericError, setGenericError] = useState('');
 
     const navigate = useNavigate('/CSE442-542/2023-Fall/cse-442ae/build/login');
+    //dddd
 
     const signUpUser = (event) => {
         event.preventDefault();
@@ -27,7 +28,7 @@ function Signup() {
             favoriteRestaurant: favoriteRestaurant
         };
 
-        Axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend/signupFinal.php', userData)
+        Axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend/signupFinal.php', userData)//final script
             .then(response => {
                 if (response.data.status === 1) {
                     console.log("send success");
