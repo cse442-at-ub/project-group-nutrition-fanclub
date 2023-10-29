@@ -6,6 +6,8 @@ import Login from './components/Login';
 import Navbar from './components/Navbar';
 import Settingsbutton from './components/Settingsbutton';
 import Signup from './components/Signup';
+import Setting from './components/Setting';
+
 
 function App() {
   const [isLogin, setisLogin] = useState(false);
@@ -35,6 +37,7 @@ function App() {
           <Route path="/CSE442-542/2023-Fall/cse-442ae/build/" element={<Home />} />
           <Route path="/CSE442-542/2023-Fall/cse-442ae/build/login" element={<Login handleLogin={handleLogin} />} />
           <Route path="/CSE442-542/2023-Fall/cse-442ae/build/signup" element={<Signup />} />
+          <Route path="/CSE442-542/2023-Fall/cse-442ae/build/Setting" element={<Setting />} />
         </Routes>
       </Router>
     </div>
