@@ -28,7 +28,7 @@ function Signup() {
             favoriteRestaurant: favoriteRestaurant
         };
 
-        Axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend/signupFinal.php', userData)//final scripts
+        Axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend_signup/signupFinal.php', userData)//final scripts
             .then(response => {
                 if (response.data.status === 1) {
                     console.log("send success");
