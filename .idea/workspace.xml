@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="31e2e89e-19ab-4c0c-8429-e8e1baeeeba6" name="Changes" comment="final update1" />
+    <list default="true" id="31e2e89e-19ab-4c0c-8429-e8e1baeeeba6" name="Changes" comment="final update1">
+      <change beforePath="$PROJECT_DIR$/nutrients-fanclub/src/components/Signup.js" beforeDir="false" afterPath="$PROJECT_DIR$/nutrients-fanclub/src/components/Signup.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,7 +31,7 @@
     </favorite-branches>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="SignupFront" />
+        <entry key="$PROJECT_DIR$" value="dev" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />

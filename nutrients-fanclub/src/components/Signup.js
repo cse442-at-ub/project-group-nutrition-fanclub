@@ -27,12 +27,12 @@ function Signup() {
             favoriteRestaurant: favoriteRestaurant
         };
 
-        Axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend/signupFinal.php', userData)//final scripts
+        Axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/testsignup/signupFinal.php', userData)//final scripts
             .then(response => {
-                if (response.data.status === 1) {
+                if (response.data.status == 1) {
                     console.log("send success");
                     setErrors({}); // Clear any errors
-                } else if (response.data.status === 0) {
+                } else if (response.data.status == 0) {
                     console.log("Error:", response.data.message);
                     setErrors(response.data.errors);
                 }
