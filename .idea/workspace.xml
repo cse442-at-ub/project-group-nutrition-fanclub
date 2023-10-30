@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="31e2e89e-19ab-4c0c-8429-e8e1baeeeba6" name="Changes" comment="final update1">
-      <change beforePath="$PROJECT_DIR$/nutrients-fanclub/src/components/Signup.js" beforeDir="false" afterPath="$PROJECT_DIR$/nutrients-fanclub/src/components/Signup.js" afterDir="false" />
+    <list default="true" id="31e2e89e-19ab-4c0c-8429-e8e1baeeeba6" name="Changes" comment="darkmode">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nutrients-fanclub/src/components/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/nutrients-fanclub/src/components/Navbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nutrients-fanclub/src/components/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/nutrients-fanclub/src/components/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +149,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697942457969</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="darkmode">
+      <created>1698692415026</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1698692415026</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -183,6 +192,7 @@
     <MESSAGE value="== update" />
     <MESSAGE value="final update" />
     <MESSAGE value="final update1" />
-    <option name="LAST_COMMIT_MESSAGE" value="final update1" />
+    <MESSAGE value="darkmode" />
+    <option name="LAST_COMMIT_MESSAGE" value="darkmode" />
   </component>
 </project>

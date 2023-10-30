@@ -59,3 +59,8 @@ a {
     margin-left: 170px; /* Adjust this value as needed to match the width of your sidebar */
     padding-top: 20px; /* Match the top padding with the sidebar's padding */
 }
+
+.dark-mode{
+    background-color: #121212;
+    color: #ffffff;
+}
