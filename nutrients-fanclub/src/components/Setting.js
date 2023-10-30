@@ -1,6 +1,7 @@
 import React from 'react';
 import './Setting.css'; 
 import SettingImage from './Setting_image';
+import { Link } from 'react-router-dom';
 
 function Setting() {
     return (
@@ -10,7 +11,9 @@ function Setting() {
                     <text>Profile</text>
                 </div>
                 <div className="header-right">
-                    <button>Home</button>
+                    <Link to="/CSE442-542/2023-Fall/cse-442ae/build/">
+                        <button>Home</button>
+                    </Link>
                     <button>Reset Password</button>
                     <button>Manage Account</button>
                 </div>
@@ -29,10 +32,10 @@ function Setting() {
                     <input type="text" className="input-field" placeholder="Country" style={{flex: 1, marginRight: '10px'}} />
                     <input type="tel" className="input-field" placeholder="Phone Number" style={{flex: 1}} />
                 </div>
-                <div className="checkbox-container">
+                {/* <div className="checkbox-container">
                     <input type="checkbox" id="receiveText" name="receiveText" />
                     <label htmlFor="receiveText">Receive reply via text</label>
-                </div>
+                </div> */}
                 <button type="submit" className="save-button">SAVE</button>
             </form>
 

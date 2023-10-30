@@ -81,7 +81,7 @@
 }
 
 
-.checkbox-container {
+/* .checkbox-container {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
@@ -89,7 +89,7 @@
 
 .checkbox-container input {
     margin-right: 10px;
-}
+} */
 
 .save-button {
     display: block;
