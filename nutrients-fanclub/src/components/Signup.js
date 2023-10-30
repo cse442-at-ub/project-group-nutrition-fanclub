@@ -16,7 +16,6 @@ function Signup() {
     const [genericError, setGenericError] = useState('');
 
     const navigate = useNavigate('/CSE442-542/2023-Fall/cse-442ae/build/login');
-    //dddd
 
     const signUpUser = (event) => {
         event.preventDefault();
@@ -46,16 +45,16 @@ function Signup() {
 
     return (
         <div>
-            <div className='app-container' style={{ paddingTop: 150 }}>
+            <div className='app-container' style={{ paddingTop: 90 }}>
                 {genericError && <div className="error-message">{genericError}</div>}
                 <form onSubmit={signUpUser}>
-                    <Input_login placeholder="username" value={username} onChange={(e) => setUsername(e.target.value)} />
+                    <Input_login placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
                     {errors.username && <div className="error-message">{errors.username}</div>}
 
-                    <Input_login placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                    <Input_login placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
                     {errors.email && <div className="error-message">{errors.email}</div>}
 
-                    <Input_login placeholder="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                    <Input_login placeholder="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                     {errors.password && <div className="error-message">{errors.password}</div>}
 
                     <Input_login placeholder="Favorite Restaurant" value={favoriteRestaurant} onChange={(e) => setFavoriteRestaurant(e.target.value)} />

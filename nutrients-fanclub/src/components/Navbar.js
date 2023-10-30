@@ -17,30 +17,11 @@ import './style.css';
               <Link to="/CSE442-542/2023-Fall/cse-442ae/build/" className="custom-link">HOME</Link>
             </ul>
             <a style={{ padding: 7 }}></a>
-            {/* <ul className="navbar-nav mb-2 mb-lg-0">
+            <ul className="navbar-nav mb-2 mb-lg-0">
               <Link to="/CSE442-542/2023-Fall/cse-442ae/build/login">
                 <button className="btn btn-light rounded-pill" type="button" style={{ color: "#2E6F57" }}>SIGN IN</button>
               </Link>
-            </ul> */}
-            {isLogin ? (
-              <button 
-                className="btn btn-light rounded-pill" 
-                type="button" 
-                style={{ color: "#2E6F57", fontWeight: 700 }} 
-                onClick={handleLogout}
-              >
-              SIGN OUT
-            </button>
-            ) : (
-              <button 
-                className="btn btn-light rounded-pill" 
-                type="button" 
-                style={{ color: "#2E6F57" , fontWeight: 700}} 
-                onClick={() => window.location.href='/CSE442-542/2023-Fall/cse-442ae/build/login'}
-              >
-              SIGN IN
-            </button>
-            )}
+            </ul> 
           </div>
         </div>
       </nav>
