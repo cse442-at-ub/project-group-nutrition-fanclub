@@ -1,69 +1,102 @@
-import Axios from "axios";
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import Axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import Bigbutton from './Bigbutton';
 import Content_signup from "./Content_signup";
-import Input_login from './Input_login';
+import Input_signup from "./input_signup";
 
 import './style.css';
 
 function Signup() {
-    const [username, setUsername] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [favoriteRestaurant, setFavoriteRestaurant] = useState("");
-    const [errors, setErrors] = useState({});
-    const [genericError, setGenericError] = useState('');
+    const [formData, setFormData] = useState({
+        username: '',
+        email: '',
+        password: '',
+        favorite_restaurant: ''
+    });
+    const [feedback, setFeedback] = useState({
+        message: '',
+        errors: {}
+    });
 
-    const navigate = useNavigate('/CSE442-542/2023-Fall/cse-442ae/build/login');
+    const navigate = useNavigate();
 
-    const signUpUser = (event) => {
-        event.preventDefault();
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prevState => ({
+            ...prevState,
+            [name]: value
+        }));
+    };
 
-        const userData = {
-            username: username,
-            password: password,
-            email: email,
-            favoriteRestaurant: favoriteRestaurant
-        };
-
-        Axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/testsignup/signupFinal.php', userData)//final scripts
-            .then(response => {
-                if (response.data.status == 1) {
-                    console.log("send success");
-                    setErrors({}); // Clear any errors
-                } else if (response.data.status == 0) {
-                    console.log("Error:", response.data.message);
-                    setErrors(response.data.errors);
-                }
-            })
-            .catch(error => {
-                console.log(error, 'catch the hoop');
-                setGenericError('Something went wrong. Please try again.');
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await Axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend_signup/signupFinal.php', formData);
+            const data = response.data;
+            if (data.status === 1) {
+                setFeedback({
+                    message: data.message,
+                    errors: {}
+                });
+                console.log("send success");
+                navigate('/CSE442-542/2023-Fall/cse-442ae/build/login');  // Navigate after a successful signup
+            } else {
+                setFeedback({
+                    message: data.message,
+                    errors: data.errors
+                });
+            }
+        } catch (err) {
+            console.error("An error occurred:", err);
+            setFeedback({
+                message: 'An error occurred. Please try again.',
+                errors: {}
             });
+        }
     };
 
     return (
-        <div>
-            <div className='app-container' style={{ paddingTop: 90 }}>
-                {genericError && <div className="error-message">{genericError}</div>}
-                <form onSubmit={signUpUser}>
-                    <Input_login placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
-                    {errors.username && <div className="error-message">{errors.username}</div>}
+        <div className='app-container' style={{ paddingTop: 150 }}>
+            <form onSubmit={handleSubmit}>
+                <Input_signup
+                    placeholder="Username"
+                    name="username"
+                    value={formData.username}
+                    onChange={handleChange}
+                />
+                {feedback.errors.username && <div className="error-message" style={{color: 'red'}}>{feedback.errors.username}</div>}
 
-                    <Input_login placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                    {errors.email && <div className="error-message">{errors.email}</div>}
+                <Input_signup
+                    placeholder="Email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                />
+                {feedback.errors.email && <div className="error-message" style={{color: 'red'}}>{feedback.errors.email}</div>}
 
-                    <Input_login placeholder="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                    {errors.password && <div className="error-message">{errors.password}</div>}
+                <Input_signup
+                    placeholder="Password"
+                    type="password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                />
+                {feedback.errors.password && <div className="error-message" style={{color: 'red'}}>{feedback.errors.password}</div>}
 
-                    <Input_login placeholder="Favorite Restaurant" value={favoriteRestaurant} onChange={(e) => setFavoriteRestaurant(e.target.value)} />
-                    {errors.favoriteRestaurant && <div className="error-message">{errors.favoriteRestaurant}</div>}
+                <Input_signup
+                    placeholder="Favorite Restaurant"
+                    name="favorite_restaurant"
+                    value={formData.favorite_restaurant}
+                    onChange={handleChange}
+                />
+                {feedback.errors.favorite_restaurant && <div className="error-message">{feedback.errors.favorite_restaurant}</div>}
 
-                    <Bigbutton text="CREATE" />
-                </form>
-                <Content_signup />
-            </div>
+                <Bigbutton text="CREATE" />
+            </form>
+
+            {feedback.message && <div className="feedback" style={{color: 'red'}}>{feedback.message}</div>}
+            <Content_signup />
         </div>
     );
 }

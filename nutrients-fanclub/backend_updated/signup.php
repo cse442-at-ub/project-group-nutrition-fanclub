@@ -7,6 +7,7 @@ function isPasswordValidLength($password) {
     return strlen($password) >= 8 && strlen($password) <= 20;
 }
 
+
 function isValidInput($input) {
     // 
     $invalidCharacters = [' ', '!', '@', '#', '$', '%', '^', '&', '*'];
@@ -97,6 +98,22 @@ switch ($method) {
         }
 }
 ?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Form</title>
+</head>
+<body>
+    <form action="http://localhost/path/to/your/script.php" method="POST">
+        <input type="text" name="username" placeholder="Username"><br><br>
+        <input type="password" name="password" placeholder="Password"><br><br>
+        <input type="email" name="email" placeholder="Email"><br><br>
+        <input type="text" name="favorite_restaurant" placeholder="Favorite Restaurant"><br><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
 
 
 
