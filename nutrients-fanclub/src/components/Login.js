@@ -5,7 +5,6 @@ import Input_login from './Input_login';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-
 function Login({handleLogin}) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -32,7 +31,6 @@ function Login({handleLogin}) {
         }else {
             setPasswordError('');
         }
-
         return isValid;
     }
 
@@ -68,7 +66,6 @@ function Login({handleLogin}) {
                              onChange={(e) => setUsername(e.target.value)}
                              />
                 {usernameError && <div style={{color: 'red'}}>{usernameError}</div>}
-
 
                 <Input_login placeholder="Password" 
                              type="password"
