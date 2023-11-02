@@ -25,11 +25,8 @@ function Setting() {
 
 
             <form>
-                <input type="text" className="input-field" placeholder="First Name" />
-                <input type="text" className="input-field" placeholder="Last Name" />
-                <input type="email" className="input-field" placeholder="Email" />
+                <input type="email" className="input-field" placeholder="Username" />
                 <div className="flex-container">
-                    <input type="text" className="input-field" placeholder="Country" style={{flex: 1, marginRight: '10px'}} />
                     <input type="tel" className="input-field" placeholder="Phone Number" style={{flex: 1}} />
                 </div>
                 {/* <div className="checkbox-container">
