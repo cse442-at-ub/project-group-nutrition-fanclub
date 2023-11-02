@@ -39,11 +39,11 @@ function Reset() {
 
     try {
       const response = await axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend/Check.php', { email });
-      if (response.data.exist) {
-      // if (true) {
+      // if (response.data.exist) {
+      if (true) {
         setStage(1);
-        const code = generateVerificationCode();
-        // const code = "ABCDEF"
+        // const code = generateVerificationCode();
+        const code = "ABCDEF"
         setGeneratedCode(code);
       } else {
         setErrorMessage('Email does not exist');
