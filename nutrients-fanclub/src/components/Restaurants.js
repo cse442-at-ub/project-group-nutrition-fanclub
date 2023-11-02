@@ -58,18 +58,6 @@ function Restaurants() {
           </div>
         </div>
       </div>
-      <div>
-        <h2>Filtered Restaurants</h2>
-        <ul>
-          {filteredRestaurants.map((restaurant) => (
-            <li key={restaurant.id}>
-              <h3>{restaurant.name}</h3>
-              <p>{restaurant.review}</p>
-              {/* Add other restaurant details here */}
-            </li>
-          ))}
-        </ul>
-      </div>
     </div>
   );
 }

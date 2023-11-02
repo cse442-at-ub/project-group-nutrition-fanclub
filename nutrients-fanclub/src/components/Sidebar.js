@@ -1,9 +1,10 @@
 import Axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 function Sidebar() {
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+  const [selectedFiltersText, setSelectedFiltersText] = useState('');
 
   const handleFilterSelection = (filter) => {
     const updatedFilters = [...selectedFilters];
@@ -17,7 +18,7 @@ function Sidebar() {
     setSelectedFilters(updatedFilters);
   };
 
-  const sendFiltersToServer = () => {
+  const sendFiltersToServer = async() => {
     Axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend_signup/filters.php', { filters: selectedFilters })
       .then((response) => {
         setFilteredRestaurants(response.data);
@@ -28,9 +29,10 @@ function Sidebar() {
       });
   };
 
-  useEffect(() => {
-    sendFiltersToServer();
-  }, [selectedFilters]);
+  const handleApplyFilters = () => {
+    sendFiltersToServer(selectedFilters);
+    setSelectedFiltersText(selectedFilters.join(', '));
+  };
 
   return (
     <div className="container">
@@ -69,6 +71,12 @@ function Sidebar() {
                 <label className="form-check-label" htmlFor={`FoodCheck${index}`}>{food}</label>
               </div>
             ))}
+            <button className="btn btn-primary" onClick={handleApplyFilters}>
+              Apply
+            </button>
+            <div>
+              <p>Selected Filters: {selectedFiltersText}</p>
+            </div>
           </ul>
         </div>
       </div>
