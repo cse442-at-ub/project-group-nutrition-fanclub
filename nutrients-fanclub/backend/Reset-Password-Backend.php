@@ -1,5 +1,5 @@
 <?php
-include '../backend/db.php';
+include 'db.php';
 
 $mysqli = connectToDatabase();
 
