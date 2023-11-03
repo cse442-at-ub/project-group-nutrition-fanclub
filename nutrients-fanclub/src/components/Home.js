@@ -1,15 +1,11 @@
 import React from 'react';
-import Restaurants from './Restaurants';
-import Searchbar from './Searchbar';
-import Sidebar from './Sidebar';
+import RestaurantFilter from './RestaurantFilter';
 
 function Home() {
   return (
     <div>
-      <Sidebar />
-      <Searchbar />
       <div className="container">
-        <Restaurants />
+        <RestaurantFilter />
       </div>
     </div>
   );

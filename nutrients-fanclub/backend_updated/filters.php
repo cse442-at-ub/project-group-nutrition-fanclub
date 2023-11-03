@@ -22,25 +22,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $filterString = "'" . implode("', '", $filterArray) . "'";
 
         $sql = "SELECT * FROM restaurants WHERE 
-            American = 'yes' AND 'American' IN ($filterString)
-            OR Chinese = 'yes' AND 'Chinese' IN ($filterString)
-            OR Halal = 'yes' AND 'Halal' IN ($filterString)
-            OR Japanese = 'yes' AND 'Japanese' IN ($filterString)
-            OR Indian = 'yes' AND 'Indian' IN ($filterString)
-            OR Korean = 'yes' AND 'Korean' IN ($filterString)";
-            
-        $result = $conn->query($sql);
-
-        if ($result->num_rows > 0) {
-            // Output data of each row
-            while ($row = $result->fetch_assoc()) {
-                echo "Name: " . $row["name"] . " - Cuisine: " . $row["cuisine"] . "<br>";
-            }
-        } else {
-            echo "No restaurants found for the specified filters.";
-        }
+            (American = 'yes' AND 'American' IN ($filterString))
+            OR (Chinese = 'yes' AND 'Chinese' IN ($filterString))
+            OR (Halal = 'yes' AND 'Halal' IN ($filterString))
+            OR (Japanese = 'yes' AND 'Japanese' IN ($filterString))
+            OR (Indian = 'yes' AND 'Indian' IN ($filterString))
+            OR (Korean = 'yes' AND 'Korean' IN ($filterString))";
     } else {
-        echo "No filters provided.";
+        // If no filters are provided, retrieve all restaurants
+        $sql = "SELECT * FROM restaurants";
+    }
+
+    $result = $conn->query($sql);
+
+    $restaurants = array(); // Create an array to hold restaurant data
+
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            // Add each restaurant to the array
+            $restaurants[] = array(
+                "name" => $row["name"],
+                "cuisine" => $row["cuisine"]
+            );
+        }
+
+        // Encode the array as JSON and echo the response
+        echo json_encode($restaurants);
+    } else {
+        echo "No restaurants found for the specified filters.";
     }
 }
 
