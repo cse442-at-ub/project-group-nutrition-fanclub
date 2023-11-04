@@ -1,9 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Setting.css'; 
 import SettingImage from './Setting_image';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+
 
 function Setting() {
+    const initialData = JSON.parse(localStorage.getItem('userData')) || {};
+    const [data, setData] = useState(initialData);
+
+    useEffect(() => {
+      const storedData = localStorage.getItem('userData');
+      if (storedData) {
+        setUserData(JSON.parse(storedData));
+      }
+    }, []);
+
+    const handleSave = async (e) => {
+        e.preventDefault();  
+        try {
+            const response = await axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend/Setting.php.php', userData);
+            console.log("Response from server:", response.data); 
+        } catch (error) {
+            console.error("Error saving data:", error);
+        }
+    };
+
     return (
         <div className="container">
             <div className="header-tabs">
@@ -24,15 +46,11 @@ function Setting() {
             </div>
 
 
-            <form>
-                <input type="email" className="input-field" placeholder="Username" />
+            <form onSubmit={handleSave}>
+                <input type="text" className="input-field" placeholder="Username" value={userData.username || ''} onChange={(e) => setUserData({ ...userData, username: e.target.value })} />
                 <div className="flex-container">
-                    <input type="tel" className="input-field" placeholder="Phone Number" style={{flex: 1}} />
+                    <input type="tel" className="input-field" placeholder="Phone Number" value={userData.tel || ''} onChange={(e) => setUserData({ ...userData, tel: e.target.value })} style={{flex: 1}} />
                 </div>
-                {/* <div className="checkbox-container">
-                    <input type="checkbox" id="receiveText" name="receiveText" />
-                    <label htmlFor="receiveText">Receive reply via text</label>
-                </div> */}
                 <button type="submit" className="save-button">SAVE</button>
             </form>
 

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Routes, } from 'react-router-dom';
 import './App.css';
 import Home from './components/Home';
 import Login from './components/Login';
@@ -9,8 +9,11 @@ import Signup from './components/Signup';
 import Setting from './components/Setting';
 
 
+
+
 function App() {
   const [isLogin, setisLogin] = useState(false);
+
 
   const handleLogin = () => {
     setisLogin(true);
@@ -25,13 +28,14 @@ function App() {
   const handleLogout = () => {
     setisLogin(false);
     localStorage.removeItem('isLoggedIn');
+    window.location.href = "/CSE442-542/2023-Fall/cse-442ae/build/";
   };
 
   return (
     <div className="App">
       <Router>
         <Navbar isLogin={isLogin} handleLogout={handleLogout}/>
-        <Settingsbutton />
+        <Settingsbutton isLogin={isLogin} />
         <div style={{paddingTop: 100}}></div>
         <Routes>
           <Route path="/CSE442-542/2023-Fall/cse-442ae/build/" element={<Home />} />
