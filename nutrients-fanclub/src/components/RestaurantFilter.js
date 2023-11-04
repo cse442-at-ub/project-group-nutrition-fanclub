@@ -1,40 +1,38 @@
 import Axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import RestaurantCard from './RestaurantCard';
 import { useNavigate } from "react-router-dom";
+import RestaurantCard from './RestaurantCard';
 
 function RestaurantFilter() {
   const [selectedFilters, setSelectedFilters] = useState([]);
-  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+  const [filteredRestaurants, setFilteredRestaurants] = useState(["DC"]);
   const [selectedFiltersText, setSelectedFiltersText] = useState('');
   const navigate = useNavigate();
 
   const handleFilterSelection = (filter) => {
     const updatedFilters = [...selectedFilters];
-
     if (updatedFilters.includes(filter)) {
       updatedFilters.splice(updatedFilters.indexOf(filter), 1);
     } else {
       updatedFilters.push(filter);
     }
-
     setSelectedFilters(updatedFilters);
   };
 
   const sendFiltersToServer = async () => {
-        try {
-            const response = await Axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend_signup/filters.php', {filters:selectedFilters});
-            const data = JSON.parse(response.data);
-            if (response.status === 200) {
-                setFilteredRestaurants(data)
-                console.log("send success");
-                //navigate('/CSE442-542/2023-Fall/cse-442ae/build/login'); 
-            } else {
-                console.log("Post request failed");
-            }
-        }catch (error){
-          console.log("error: blahblahblah")
-        }
+    try {
+      const response = await Axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend_signup/filters.php', {filters:selectedFilters});
+      const data = JSON.parse(response.data);
+      if (response.status === 200) {
+        setFilteredRestaurants(data)
+        console.log("send success");
+        //navigate('/CSE442-542/2023-Fall/cse-442ae/build/login'); 
+      } else {
+        console.log("Post request failed");
+      }
+    } catch (error){
+      console.log("error: blahblahblah")
+    }
     // Axios.post('nutrients-fanclub\backend_updated\filters.php', { filters: selectedFilters.join(',') })
     //   .then((response) => {
     //     setFilteredRestaurants(response.data);
@@ -52,9 +50,9 @@ function RestaurantFilter() {
 
   useEffect(() => {
     // Fetch all restaurants initially
-    Axios.get('nutrients-fanclub\backend_updated\filters.php')
+    Axios.get('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend_signup/filters.php')
       .then((response) => {
-        setFilteredRestaurants(response.data);
+        setFilteredRestaurants(JSON.parse(response.data));
       })
       .catch((error) => {
         console.error('Error:', error);
@@ -122,6 +120,7 @@ function RestaurantFilter() {
               </button>
               <div>
                 <p>Selected Filters: {selectedFiltersText}</p>
+                <p>Restaurants: {filteredRestaurants}</p>
               </div>
             </ul>
           </div>
