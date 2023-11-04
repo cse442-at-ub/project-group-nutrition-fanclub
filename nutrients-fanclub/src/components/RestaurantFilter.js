@@ -1,11 +1,13 @@
 import Axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import RestaurantCard from './RestaurantCard';
+import { useNavigate } from "react-router-dom";
 
 function RestaurantFilter() {
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [selectedFiltersText, setSelectedFiltersText] = useState('');
+  const navigate = useNavigate();
 
   const handleFilterSelection = (filter) => {
     const updatedFilters = [...selectedFilters];
@@ -20,14 +22,27 @@ function RestaurantFilter() {
   };
 
   const sendFiltersToServer = async () => {
-    Axios.post('nutrients-fanclub\backend_updated\filters.php', { filters: selectedFilters.join(',') })
-      .then((response) => {
-        setFilteredRestaurants(response.data);
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-        // Optionally, handle the error further, e.g., show an error message to the user.
-      });
+        try {
+            const response = await Axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend_signup/filters.php', {filters:selectedFilters});
+            const data = JSON.parse(response.data);
+            if (response.status === 200) {
+                setFilteredRestaurants(data)
+                console.log("send success");
+                //navigate('/CSE442-542/2023-Fall/cse-442ae/build/login'); 
+            } else {
+                console.log("Post request failed");
+            }
+        }catch (error){
+          console.log("error: blahblahblah")
+        }
+    // Axios.post('nutrients-fanclub\backend_updated\filters.php', { filters: selectedFilters.join(',') })
+    //   .then((response) => {
+    //     setFilteredRestaurants(response.data);
+    //   })
+    //   .catch((error) => {
+    //     console.error('Error:', error);
+    //     // Optionally, handle the error further, e.g., show an error message to the user.
+    //   });
   };
 
   const handleApplyFilters = () => {
