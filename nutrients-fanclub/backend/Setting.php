@@ -3,9 +3,6 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
 header("Content-Type: application/json");
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Headers: *");
-header("Content-Type: application/json");
 
 include 'db.php';
 
@@ -17,11 +14,15 @@ $alter_sql = "ALTER TABLE usersinfo
               ADD IF NOT EXISTS image_path VARCHAR(255) DEFAULT NULL";
 $mysqli->query($alter_sql);
 
-$action = $_POST['action'];
+// Get the JSON payload and decode it
+$inputJSON = file_get_contents('php://input');
+$input = json_decode($inputJSON, TRUE); // convert JSON into array
+
+$action = $input['action'];
 
 if ($action == 'retrieve') {
-    // Get the email from the POST data
-    $email = $_POST['email'];
+    // Get the email from the JSON data
+    $email = $input['email'];
 
     // Prepare the SELECT statement to get phone, image_path, and username
     $select_sql = "SELECT username, phone, image_path FROM usersinfo WHERE email = ?";
@@ -38,11 +39,11 @@ if ($action == 'retrieve') {
     // Close the prepared statement
     $stmt->close();
 } elseif ($action == 'update') {
-    // Get the data from the POST data
-    $email = $_POST['email'];
-    $new_username = $_POST['username'];
-    $phone = $_POST['phone'];
-    $image_path = $_POST['image_path'];
+    // Get the data from the JSON data
+    $email = $input['email'];
+    $new_username = $input['username'];
+    $phone = $input['phone'];
+    $image_path = $input['image_path'];
 
     // Prepare the UPDATE statement to update the user data
     $update_sql = "UPDATE usersinfo SET username=?, phone=?, image_path=? WHERE email=?";
