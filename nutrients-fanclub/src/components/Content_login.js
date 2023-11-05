@@ -9,7 +9,9 @@ function Content_login() {
                 Not registered? <Link to="/CSE442-542/2023-Fall/cse-442ae/build/signup">Create an account</Link>
             </p>
             <p>
+            <Link to="/CSE442-542/2023-Fall/cse-442ae/build/Reset">
                 <a href='#'>Forgot Password?</a>
+            </Link>
             </p>
         </div>
     );
