@@ -1,0 +1,70 @@
+.manage-account-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Use min-height to ensure it covers the full viewport */
+}
+
+.manage-account-box {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 50%; /* Adjust width as needed to make the container narrower */
+}
+
+.manage-account-section h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333; /* Assuming dark text for light theme */
+}
+
+.manage-account-action {
+    margin-bottom: 20px;
+}
+
+.logout-button,
+.delete-button {
+    background-color: red; /* Red button background color */
+    color: #fff; /* White text color for better contrast on red background */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s; /* Transition for background and text color */
+}
+
+.logout-button:hover,
+.delete-button:hover {
+    background-color: #cc0000; /* Darker red for button hover state */
+    color: #fff; /* Text color can remain white */
+}
+
+/* Dark theme overrides */
+body.dark-mode .manage-account-page {
+    /* No change needed here unless you want a different layout in dark mode */
+}
+
+body.dark-mode .manage-account-box {
+    background: #333; /* Dark background for the box */
+    color: #f5f5f5; /* Light text color for readability */
+}
+
+body.dark-mode .manage-account-section h2 {
+    color: #f5f5f5; /* Light color text for headings */
+}
+
+body.dark-mode .manage-account-action {
+    /* No change needed here unless you want to style the actions differently in dark mode */
+}
+
+body.dark-mode .logout-button,
+body.dark-mode .delete-button {
+    background-color: #555; /* Darker button background */
+    color: #f5f5f5; /* Light color text for buttons */
+}
+
+body.dark-mode .logout-button:hover,
+body.dark-mode .delete-button:hover {
+    background-color: #666; /* Slightly lighter background for button hover state in dark mode */
+}

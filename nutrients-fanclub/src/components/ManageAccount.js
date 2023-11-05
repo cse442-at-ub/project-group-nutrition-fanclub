@@ -1,58 +1,99 @@
-import React from 'react';
-import Axios from 'axios';
-import { useNavigate } from "react-router-dom";
-import Bigbutton from './Bigbutton';
-import Content_signup from "./Content_signup";
-
-
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Axios from 'axios'; // Make sure axios is installed and imported for HTTP requests
+import './ManageAccount.css'; // Make sure you create a CSS file with appropriate styles
 import './style.css';
 
 function ManageAccount() {
+    const [feedback, setFeedback] = useState({
+        message: '',
+        errors: {}
+    });
+
     const navigate = useNavigate();
 
     const handleLogout = async () => {
         try {
-            const response = await Axios.post('YOUR_BACKEND_ENDPOINT_FOR_LOGOUT');
-            if (response.data.status === 1) {
-                navigate('/');
+            // Placeholder for actual logout backend endpoint
+            const logoutEndpoint = '/api/logout';
+
+            // You should replace this with the actual backend call
+            const response = await Axios.post(logoutEndpoint);
+
+            // Check response from the backend and proceed
+            if (response.status === 200) {
+                setFeedback({
+                    message: 'You have been logged out successfully.',
+                    errors: {}
+                });
+                navigate('/login'); // navigate to login page
             } else {
-                console.error("Error logging out:", response.data.message);
+                // Handle any errors returned from the backend
+                setFeedback({
+                    message: 'Failed to logout. Please try again.',
+                    errors: {}
+                });
             }
-        } catch (err) {
-            console.error("An error occurred during logout:", err);
+        } catch (error) {
+            console.error('Logout failed:', error);
+            setFeedback({
+                message: 'An error occurred during logout. Please try again.',
+                errors: {}
+            });
         }
     };
 
     const handleDeleteAccount = async () => {
-        const confirmation = window.confirm("Are you sure you want to delete your account? This action cannot be undone.");
-        if (!confirmation) {
-            return;
-        }
-
         try {
-            const response = await Axios.post('YOUR_BACKEND_ENDPOINT_FOR_DELETE_ACCOUNT');
-            if (response.data.status === 1) {
-                navigate('/');
+            // Placeholder for actual delete account backend endpoint
+            const deleteAccountEndpoint = '/api/delete-account';
+
+            // You should replace this with the actual backend call
+            const response = await Axios.delete(deleteAccountEndpoint);
+
+            // Check response from the backend and proceed
+            if (response.status === 200) {
+                setFeedback({
+                    message: 'Your account has been deleted successfully.',
+                    errors: {}
+                });
+                navigate('/CSE442-542/2023-Fall/cse-442ae/build/'); // navigate to some confirmation page or back to home
             } else {
-                console.error("Error deleting account:", response.data.message);
+                // Handle any errors returned from the backend
+                setFeedback({
+                    message: 'Failed to delete the account. Please try again.',
+                    errors: {}
+                });
             }
-        } catch (err) {
-            console.error("An error occurred during account deletion:", err);
+        } catch (error) {
+            console.error('Delete account failed:', error);
+            setFeedback({
+                message: 'An error occurred while deleting the account. Please try again.',
+                errors: {}
+            });
         }
     };
 
     return (
-        <div className='app-container' style={{ paddingTop: 150 }}>
-            <h2>Manage Account</h2>
+        <div className="manage-account-page">
+            <div className="manage-account-box">
+                <div className="manage-account-section">
+                    <h2>Manage Account</h2>
 
-            <div className="account-action">
-                <Content_signup title="Log Out Your Account" description="You can log out to ensure your account's security, especially on shared or public devices." />
-                <Bigbutton text="Log Out" onClick={handleLogout} />
-            </div>
+                    <div className="manage-account-action">
+                        <h3>Log Out Your Account</h3>
+                        <p>You can log out to ensure your account's security, especially on shared or public devices.</p>
+                        <button className="logout-button" onClick={handleLogout}>Log Out</button>
+                    </div>
 
-            <div className="account-action">
-                <Content_signup title="Delete Your Account" description="You can delete your account to permanently remove all your personal data and reviews from our platform. Once deleted, this action cannot be undone." />
-                <Bigbutton text="Delete Account" onClick={handleDeleteAccount} />
+                    <div className="manage-account-action">
+                        <h3>Delete Your Account</h3>
+                        <p>You can delete your account to permanently remove all your personal data and reviews from our platform. Once deleted, this action cannot be undone.</p>
+                        <button className="delete-button" onClick={handleDeleteAccount}>Delete Account</button>
+                    </div>
+
+                    {feedback.message && <div className="feedback" style={{ color: 'red' }}>{feedback.message}</div>}
+                </div>
             </div>
         </div>
     );

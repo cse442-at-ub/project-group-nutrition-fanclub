@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="31e2e89e-19ab-4c0c-8429-e8e1baeeeba6" name="Changes" comment="darkmode">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023_10_20_14_17__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023_10_20_14_17__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nutrients-fanclub/src/components/ManageAccount.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nutrients-fanclub/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/nutrients-fanclub/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nutrients-fanclub/src/components/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/nutrients-fanclub/src/components/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nutrients-fanclub/src/components/ManageAccount.js" beforeDir="false" afterPath="$PROJECT_DIR$/nutrients-fanclub/src/components/ManageAccount.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nutrients-fanclub/src/components/Signup.js" beforeDir="false" afterPath="$PROJECT_DIR$/nutrients-fanclub/src/components/Signup.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,6 +81,7 @@
       <workItem from="1697777951068" duration="28295000" />
       <workItem from="1697940967221" duration="260000" />
       <workItem from="1697941241494" duration="1258000" />
+      <workItem from="1699197879983" duration="4285000" />
     </task>
     <task id="LOCAL-00001" summary="storeinDB Update">
       <created>1697776830853</created>
@@ -154,7 +160,14 @@
       <option name="project" value="LOCAL" />
       <updated>1698692415026</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="darkmode">
+      <created>1698950329775</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1698950329775</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -192,16 +205,5 @@
     <MESSAGE value="final update1" />
     <MESSAGE value="darkmode" />
     <option name="LAST_COMMIT_MESSAGE" value="darkmode" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/nutrients-fanclub/src/components/Signup.js</url>
-          <line>10</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

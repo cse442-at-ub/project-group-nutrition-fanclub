@@ -12,6 +12,7 @@ function Home() {
         <Restaurants />
       </div>
     </div>
+      
   );
 }
 
