@@ -21,13 +21,13 @@ function App() {
   };
 
   useEffect(() => {
-    const loggedIn = localStorage.getItem('isLoggedIn'); 
+    const loggedIn = localStorage.getItem('isLogIn'); 
     setisLogin(loggedIn === 'true');
   },[]);
 
   const handleLogout = () => {
     setisLogin(false);
-    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('isLogIn');
     window.location.href = "/CSE442-542/2023-Fall/cse-442ae/build/";
   };
 

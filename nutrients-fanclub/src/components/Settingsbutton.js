@@ -1,8 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function Settingsbutton({ isLogin }) {
+  const event = new Event('userDataUpdated');
+  window.dispatchEvent(event);
+  const navigate = useNavigate();
+  
   const handleButtonClick = async () => {
     if (isLogin) {
       const userEmail = localStorage.getItem('userEmail');
@@ -12,6 +16,10 @@ function Settingsbutton({ isLogin }) {
           action: "retrieve",
         });
         localStorage.setItem('userData', JSON.stringify(response.data));
+        setTimeout(() => {
+          navigate("/CSE442-542/2023-Fall/cse-442ae/build/Setting");
+        }, 500);
+        console.log(localStorage)
       } catch (error) {
         console.error("Error fetching user data:", error);
       }
@@ -19,7 +27,6 @@ function Settingsbutton({ isLogin }) {
   };
 
   return isLogin ? (
-    <Link to="/CSE442-542/2023-Fall/cse-442ae/build/Setting" onClick={handleButtonClick}>
       <img
         src={"https://img.icons8.com/?size=200&id=3473&format=png"}
         style={{
@@ -31,8 +38,9 @@ function Settingsbutton({ isLogin }) {
           height: '65px',
           cursor: 'pointer',
         }}
+        onClick={handleButtonClick}
       />
-    </Link>
+
   ) : null;
 }
 

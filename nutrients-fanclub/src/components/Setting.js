@@ -16,11 +16,17 @@ function Setting() {
                 setData(JSON.parse(e.newValue));
             }
         };
-
+    
+        const handleUserDataUpdated = () => {
+            setData(JSON.parse(localStorage.getItem("userData")));
+        };
+    
         window.addEventListener('storage', handleStorageChange);
-
+        window.addEventListener('userDataUpdated', handleUserDataUpdated);
+    
         return () => {
             window.removeEventListener('storage', handleStorageChange);
+            window.removeEventListener('userDataUpdated', handleUserDataUpdated);
         };
     }, []);
 
