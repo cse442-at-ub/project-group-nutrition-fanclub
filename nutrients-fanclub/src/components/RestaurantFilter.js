@@ -1,39 +1,41 @@
 import Axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from "react-router-dom";
 import RestaurantCard from './RestaurantCard';
+import { useNavigate } from 'react-router-dom';
 
 function RestaurantFilter() {
   const [selectedFilters, setSelectedFilters] = useState([]);
-  const [filteredRestaurants, setFilteredRestaurants] = useState(["DC"]);
+  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [selectedFiltersText, setSelectedFiltersText] = useState('');
   const navigate = useNavigate();
 
   const handleFilterSelection = (filter) => {
     const updatedFilters = [...selectedFilters];
+
     if (updatedFilters.includes(filter)) {
       updatedFilters.splice(updatedFilters.indexOf(filter), 1);
     } else {
       updatedFilters.push(filter);
     }
+
     setSelectedFilters(updatedFilters);
   };
 
   const sendFiltersToServer = async () => {
     try {
-      const response = await Axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend_signup/filters.php', {filters:selectedFilters});
-      const data = JSON.parse(response.data);
+      const response = await Axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend_signup/filters.php', { filters: selectedFilters });
       if (response.status === 200) {
-        setFilteredRestaurants(data)
-        console.log("send success");
-        //navigate('/CSE442-542/2023-Fall/cse-442ae/build/login'); 
+        //navigate('/CSE442-542/2023-Fall/cse-442ae/build/login');
+        const info = response.data;
+        setFilteredRestaurants(["mcdonal",'wendys',"burga king"]);
+        console.log('Request successful');
       } else {
-        console.log("Post request failed");
+        console.error('Request failed with status:', response.status);
       }
-    } catch (error){
-      console.log("error: blahblahblah")
+    } catch (error) {
+      console.error('Error:', error);
     }
-    // Axios.post('nutrients-fanclub\backend_updated\filters.php', { filters: selectedFilters.join(',') })
+    // Axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend_signup/filters.php', { filters: selectedFilters.join(',') })
     //   .then((response) => {
     //     setFilteredRestaurants(response.data);
     //   })
@@ -50,9 +52,9 @@ function RestaurantFilter() {
 
   useEffect(() => {
     // Fetch all restaurants initially
-    Axios.get('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend_signup/filters.php')
+    Axios.get('nutrients-fanclub\backend_updated\filters.php')
       .then((response) => {
-        setFilteredRestaurants(JSON.parse(response.data));
+        setFilteredRestaurants(response.data);
       })
       .catch((error) => {
         console.error('Error:', error);
