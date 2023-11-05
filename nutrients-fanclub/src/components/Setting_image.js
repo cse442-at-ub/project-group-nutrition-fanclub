@@ -9,6 +9,8 @@ function SettingImage(props) {
 
             reader.onload = function (e) {
                 setImageSrc(e.target.result);
+                console.log(e.target.result);
+                localStorage.setItem("image",e.target.result);
             }
 
             reader.readAsDataURL(event.target.files[0]);
