@@ -32,9 +32,9 @@ function Reset() {
     try {
       const response = await axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend/Check.php', { email });
       if (response.data.exist) {
+        setErrorMessage("")
         setStage(1);
         setGeneratedCode(response.data.verificationCode);
-        console.log("verificationCode is",verificationCode,typeof verificationCode);
       } else {
         setErrorMessage('Email does not exist');
         setEmail('');
@@ -45,8 +45,8 @@ function Reset() {
   };
 
   const handleResetPassword = async () => {
-    console.log("verificationCode is",verificationCode,typeof verificationCode);
-    console.log("generatedCode is",generatedCode, typeof generatedCode);
+    // console.log("verificationCode is",verificationCode,typeof verificationCode);
+    // console.log("generatedCode is",generatedCode, typeof generatedCode);
     if (String(verificationCode) !== String(generatedCode)) {
       setErrorMessage('Verification code error');
       return;

@@ -113,3 +113,16 @@
     color: #777;
     font-size: 14px;
 }
+
+.notification {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px;
+    position: fixed; 
+    bottom: 90px; 
+    right: 30px; 
+    z-index: 99; 
+    border-radius: 8px;
+    transition: opacity 0.5s; 
+  }
+  
