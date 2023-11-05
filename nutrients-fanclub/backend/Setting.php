@@ -8,12 +8,6 @@ include 'db.php';
 
 $mysqli = connectToDatabase();
 
-// Ensure the columns 'phone' and 'image_path' exist in the table
-$alter_sql = "ALTER TABLE usersinfo 
-              ADD IF NOT EXISTS phone VARCHAR(15) DEFAULT NULL, 
-              ADD IF NOT EXISTS image_path VARCHAR(255) DEFAULT NULL";
-$mysqli->query($alter_sql);
-
 // Get the JSON payload and decode it
 $inputJSON = file_get_contents('php://input');
 $input = json_decode($inputJSON, TRUE); // convert JSON into array
