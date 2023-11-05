@@ -3,11 +3,8 @@
 // These must be at the top of your script, not inside a function
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+require __DIR__ . '/vendor/autoload.php';
 
-// Manually load PHPMailer class files
-require 'PHPMailer/src/Exception.php';
-require 'PHPMailer/src/PHPMailer.php';
-require 'PHPMailer/src/SMTP.php';
 
 if(isset($_POST["send"])){
     $mail = new PHPMailer(true);
