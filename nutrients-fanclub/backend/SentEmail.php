@@ -7,6 +7,8 @@ use PHPMailer\PHPMailer\Exception;
 // Manually load PHPMailer class files
 require __DIR__ . '/vendor/autoload.php';
 
+
+
 // Create an instance; passing `true` enables exceptions
 $mail = new PHPMailer(true);
 
@@ -16,13 +18,13 @@ try {
     $mail->isSMTP();                                          // Send using SMTP
     $mail->Host       = 'smtp.gmail.com';                   // Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                 // Enable SMTP authentication
-    $mail->Username   = 'heibaisedemao@gmail.com';                   // SMTP username
-    $mail->Password   = 'xolywhbrlzxbdfdl';                             // SMTP password
+    $mail->Username   = 'haobo442@gmail.com';                   // SMTP username
+    $mail->Password   = 'hilrlxfzihgptrwp';                             // SMTP password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;          // Enable implicit TLS encryption
     $mail->Port       = 465;                                  // TCP port to connect to
 
 
-    $mail->setFrom('heibaisedemao@gmail.com','Sender'); // Your email
+    $mail->setFrom('haobo442@gmail.com','Sender'); // Your email
     $mail->addAddress('heibaisedemao@gmail.com','user'); // email should in the db
    
 
