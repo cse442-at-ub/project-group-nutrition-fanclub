@@ -7,8 +7,6 @@ use PHPMailer\PHPMailer\Exception;
 // Manually load PHPMailer class files
 require __DIR__ . '/vendor/autoload.php';
 
-
-
 // Create an instance; passing `true` enables exceptions
 $mail = new PHPMailer(true);
 
