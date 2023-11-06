@@ -23,12 +23,13 @@ function RestaurantFilter() {
 
   const sendFiltersToServer = async () => {
     try {
-      const response = await Axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend_signup/filters.php', { filters: selectedFilters });
+      const response = await Axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend_signup/filterstest.php', { filters: selectedFilters });
       if (response.status === 200) {
         //navigate('/CSE442-542/2023-Fall/cse-442ae/build/login');
-        const info = response.data;
-        setFilteredRestaurants(["mcdonal",'wendys',"burga king"]);
-        console.log('Request successful');
+         const info = String(response.data);
+         const filtered = info.split(",");
+         setFilteredRestaurants(filtered);
+         console.log('Request successful');
       } else {
         console.error('Request failed with status:', response.status);
       }
