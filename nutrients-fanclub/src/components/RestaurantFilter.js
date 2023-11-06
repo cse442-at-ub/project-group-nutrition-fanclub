@@ -1,11 +1,11 @@
 import Axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import RestaurantCard from './RestaurantCard';
 import { useNavigate } from 'react-router-dom';
+import RestaurantCard from './RestaurantCard';
 
 function RestaurantFilter() {
   const [selectedFilters, setSelectedFilters] = useState([]);
-  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+  const [filteredRestaurants, setFilteredRestaurants] = useState(["Sizzles","Crossroads Culinary Center","Wrap-It-Up","1846 Grill","Subway","Fowl Play","Young Chow", "Pan Asia","Kali Orexi","Tikka Table","Dancing Chopsticks","Noodle Pavilion","Kung Fu Tea","La Rosas","Moe's"]);
   const [selectedFiltersText, setSelectedFiltersText] = useState('');
   const navigate = useNavigate();
 
@@ -23,7 +23,12 @@ function RestaurantFilter() {
 
   const sendFiltersToServer = async () => {
     try {
-      const response = await Axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend_signup/filterstest.php', { filters: selectedFilters });
+      var response;
+      if (selectedFilters.length == 0) {
+        response = await Axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend_signup/filterstest.php', { filters: ["American", "Chinese", "Halal", "Indian", "Japanese", "Korean", "Boba", "Breakfast", "Pizza", "Platter", "Noodles"]});
+      } else {
+        response = await Axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend_signup/filterstest.php', { filters: selectedFilters });
+      }
       if (response.status === 200) {
         //navigate('/CSE442-542/2023-Fall/cse-442ae/build/login');
          const info = String(response.data);
