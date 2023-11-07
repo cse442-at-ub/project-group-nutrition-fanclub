@@ -14,21 +14,22 @@ function ManageAccount() {
 
     const handleLogout = async () => {
         try {
-            // Placeholder for actual logout backend endpoint
+            // This is your backend endpoint for logging out
             const logoutEndpoint = 'https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend_signup/signout.php';
 
-            // You should replace this with the actual backend call
+            // Axios POST request to the logout endpoint
             const response = await Axios.post(logoutEndpoint);
 
-            // Check response from the backend and proceed
-            if (response.status === 200) {
+            // Assuming the logout is always successful as there is no status code check in the PHP code
+            // You may need to adjust this if your backend does send different responses
+            if (response.data === "Log Out successful") {
                 setFeedback({
                     message: 'You have been logged out successfully.',
                     errors: {}
                 });
-                navigate('/CSE442-542/2023-Fall/cse-442ae/build/'); // navigate to login page
+                navigate('/login'); // navigate to login page
             } else {
-                // Handle any errors returned from the backend
+                // Handle any unexpected responses from the backend
                 setFeedback({
                     message: 'Failed to logout. Please try again.',
                     errors: {}
@@ -42,6 +43,7 @@ function ManageAccount() {
             });
         }
     };
+
 
     const handleDeleteAccount = async () => {
         try {
