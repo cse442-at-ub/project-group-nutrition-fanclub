@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="31e2e89e-19ab-4c0c-8429-e8e1baeeeba6" name="Changes" comment="ManageAccount">
+    <list default="true" id="31e2e89e-19ab-4c0c-8429-e8e1baeeeba6" name="Changes" comment="ManageAccount merged">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nutrients-fanclub/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/nutrients-fanclub/src/App.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +32,7 @@
     </favorite-branches>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="darkmode" />
+        <entry key="$PROJECT_DIR$" value="ManageAccount" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -77,6 +78,10 @@
       <workItem from="1697940967221" duration="260000" />
       <workItem from="1697941241494" duration="1258000" />
       <workItem from="1699197879983" duration="7294000" />
+      <workItem from="1699317451814" duration="170000" />
+      <workItem from="1699317969023" duration="5000" />
+      <workItem from="1699318213842" duration="12000" />
+      <workItem from="1699318625381" duration="731000" />
     </task>
     <task id="LOCAL-00001" summary="storeinDB Update">
       <created>1697776830853</created>
@@ -169,7 +174,14 @@
       <option name="project" value="LOCAL" />
       <updated>1699202580393</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="ManageAccount merged">
+      <created>1699315512712</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1699315512712</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -207,6 +219,7 @@
     <MESSAGE value="final update1" />
     <MESSAGE value="darkmode" />
     <MESSAGE value="ManageAccount" />
-    <option name="LAST_COMMIT_MESSAGE" value="ManageAccount" />
+    <MESSAGE value="ManageAccount merged" />
+    <option name="LAST_COMMIT_MESSAGE" value="ManageAccount merged" />
   </component>
 </project>

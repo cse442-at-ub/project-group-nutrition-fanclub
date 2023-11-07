@@ -67,7 +67,9 @@ function Setting() {
                     <Link to="/CSE442-542/2023-Fall/cse-442ae/build/Reset">
                         <button>Reset Password</button>
                     </Link>
-                    <button>Manage Account</button>
+                    <Link to="/CSE442-542/2023-Fall/cse-442ae/build/manageaccount">
+                        <button>Manage Account</button>
+                    </Link>
                 </div>
             </div>
 
