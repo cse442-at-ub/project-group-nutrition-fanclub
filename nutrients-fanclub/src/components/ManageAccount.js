@@ -47,7 +47,7 @@ function ManageAccount() {
 
     const handleDeleteAccount = async () => {
         try {
-            // Placeholder for actual delete account backend endpoint
+            // Placeholder for actual delete account backend endpointt
             const deleteAccountEndpoint = '/api/delete-account';
 
             // You should replace this with the actual backend call
