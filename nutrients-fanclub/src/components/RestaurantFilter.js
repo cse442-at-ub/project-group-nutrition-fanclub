@@ -5,7 +5,7 @@ import RestaurantCard from './RestaurantCard';
 
 function RestaurantFilter() {
   const [selectedFilters, setSelectedFilters] = useState([]);
-  const [filteredRestaurants, setFilteredRestaurants] = useState(["Sizzles","Crossroads Culinary Center","Wrap-It-Up","1846 Grill","Subway","Fowl Play","Young Chow", "Pan Asia","Kali Orexi","Tikka Table","Dancing Chopsticks","Noodle Pavilion","Kung Fu Tea","La Rosas","Moe's"]);
+  const [filteredRestaurants, setFilteredRestaurants] = useState(["Sizzles","Crossroads Culinary Center","Wrap-It-Up","1846 Grill","Subway","Fowl Play","Young Chow", "Pan Asia","Kali Orexi","Tikka Table","Dancing Chopsticks","Noodle Pavilion","Kung Fu Tea","La Rosa's","Moe's"]);
   const [selectedFiltersText, setSelectedFiltersText] = useState('');
   const navigate = useNavigate();
 
@@ -126,10 +126,6 @@ function RestaurantFilter() {
               <button className="btn btn-primary" onClick={handleApplyFilters}>
                 Apply
               </button>
-              <div>
-                <p>Selected Filters: {selectedFiltersText}</p>
-                <p>Restaurants: {filteredRestaurants}</p>
-              </div>
             </ul>
           </div>
         </div>
