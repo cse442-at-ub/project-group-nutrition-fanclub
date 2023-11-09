@@ -45,7 +45,7 @@ function App() {
             <Route path="/CSE442-542/2023-Fall/cse-442ae/build/signup" element={<Signup />} />
             <Route path="/CSE442-542/2023-Fall/cse-442ae/build/Setting" element={<Setting />} />
             <Route path="/CSE442-542/2023-Fall/cse-442ae/build/Reset" element={<Reset />} />
-            <Route path="/CSE442-542/2023-Fall/cse-442ae/build/manageaccount" element={<ManageAccount />} />
+            <Route path="/CSE442-542/2023-Fall/cse-442ae/build/manageaccount" element={<ManageAccount handleLogout={handleLogout}/>} />
 
           </Routes>
         </Router>
