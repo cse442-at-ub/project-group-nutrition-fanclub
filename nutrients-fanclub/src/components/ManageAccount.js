@@ -12,6 +12,8 @@ function ManageAccount({handleLogout}) {
 
     const navigate = useNavigate();
 
+    // Logout invoke the {handleLogout} from Navbar.js
+
     const handleDeleteAccount = async () => {
         try {
             // Placeholder for actual delete account backend endpointt
