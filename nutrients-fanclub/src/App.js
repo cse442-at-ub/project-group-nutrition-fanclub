@@ -29,7 +29,7 @@ function App() {
 
   const handleLogout = () => {
     setisLogin(false);
-    localStorage.removeItem('isLogIn');
+    localStorage.clear();
     window.location.href = "/CSE442-542/2023-Fall/cse-442ae/build/";
   };
 

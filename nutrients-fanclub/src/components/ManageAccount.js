@@ -9,41 +9,40 @@ function ManageAccount({handleLogout}) {
         message: '',
         errors: {}
     });
-
     const navigate = useNavigate();
+
 
     // Logout invoke the {handleLogout} from Navbar.js
 
     const handleDeleteAccount = async () => {
+        // Assuming the username is stored in localStorage after login
+        const username = localStorage.getItem('userEmail');
+
+        // If username is not stored, you should retrieve it from wherever you have stored the login information
+        if (!username) {
+            alert('No user is logged in.');
+            return;
+        }
+
         try {
-            // Placeholder for actual delete account backend endpointt
-            const deleteAccountEndpoint = '/api/delete-account';
+            const response = await Axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend_signup/delete.php', {
+                action: 'deleteAccount',
+                username: username
+            });
 
-            // You should replace this with the actual backend call
-            const response = await Axios.delete(deleteAccountEndpoint);
-
-            // Check response from the backend and proceed
-            if (response.status === 200) {
-                setFeedback({
-                    message: 'Your account has been deleted successfully.',
-                    errors: {}
-                });
-                navigate('/CSE442-542/2023-Fall/cse-442ae/build/'); // navigate to some confirmation page or back to home
+            if (response.data.status === 1) {
+                alert(response.data.message);
+                localStorage.clear(); // Clear all local storage items including logged in user data
+                navigate('/login'); // Redirect to login after account deletion
             } else {
-                // Handle any errors returned from the backend
-                setFeedback({
-                    message: 'Failed to delete the account. Please try again.',
-                    errors: {}
-                });
+                alert(response.data.message);
             }
         } catch (error) {
-            console.error('Delete account failed:', error);
-            setFeedback({
-                message: 'An error occurred while deleting the account. Please try again.',
-                errors: {}
-            });
+            console.error('Error deleting account:', error);
+            alert('Failed to delete account. Please try again.');
         }
     };
+
 
     return (
         <div className="manage-account-page">
