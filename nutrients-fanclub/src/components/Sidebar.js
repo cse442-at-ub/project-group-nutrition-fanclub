@@ -1,60 +1,81 @@
-import React from 'react';
+import Axios from 'axios';
+import React, { useState } from 'react';
 
 function Sidebar() {
+  const [selectedFilters, setSelectedFilters] = useState([]);
+  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+  const [selectedFiltersText, setSelectedFiltersText] = useState('');
+
+  const handleFilterSelection = (filter) => {
+    const updatedFilters = [...selectedFilters];
+
+    if (updatedFilters.includes(filter)) {
+      updatedFilters.splice(updatedFilters.indexOf(filter), 1);
+    } else {
+      updatedFilters.push(filter);
+    }
+
+    setSelectedFilters(updatedFilters);
+  };
+
+  const sendFiltersToServer = async() => {
+    Axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend_signup/filters.php', { filters: selectedFilters })
+      .then((response) => {
+        setFilteredRestaurants(response.data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+        // Optionally, handle the error further, e.g., show an error message to the user.
+      });
+  };
+
+  const handleApplyFilters = () => {
+    sendFiltersToServer(selectedFilters);
+    setSelectedFiltersText(selectedFilters.join(', '));
+  };
+
   return (
     <div className="container">
       <div className="sidebar">
         <div className="sidebar-content">
           <ul>
-            <li style={{paddingTop: '75%'}}></li>
-            <div><h4><a style={{color: '#2E6F57'}}>Filter by</a></h4></div>
-            <hr></hr>
-            <li><h5><a>Cuisine</a></h5></li>
-            <div class="form-check">
-              <input className="form-check-input" type="checkbox" value="" id="DefaultCheck"></input>
-              <label className="form-check-label" for="DefaultCheck">American</label>
-            </div>
-            <div class="form-check">
-              <input className="form-check-input" type="checkbox" value="" id="DefaultCheck2"></input>
-              <label className="form-check-label" for="DefaultCheck2">Chinese</label>
-            </div>
-            <div className="form-check">
-              <input className="form-check-input" type="checkbox" value="" id="DefaultCheck3"></input>
-              <label className="form-check-label" for="DefaultCheck3">Halal</label>
-            </div>
-            <div className="form-check">
-              <input className="form-check-input" type="checkbox" value="" id="DefaultCheck4"></input>
-              <label className="form-check-label" for="DefaultCheck4">Indian</label>
-            </div>
-            <div className="form-check">
-              <input className="form-check-input" type="checkbox" value="" id="DefaultCheck5"></input>
-              <label className="form-check-label" for="DefaultCheck5">Japanese</label>
-            </div>
-            <div className="form-check">
-              <input className="form-check-input" type="checkbox" value="" id="DefaultCheck6"></input>
-              <label className="form-check-label" for="DefaultCheck6">Korean</label>
-            </div>
-            <hr></hr>
-            <li><h5><a>Food Options</a></h5></li>
-            <div className="form-check">
-              <input className="form-check-input" type="checkbox" value="" id="DefaultCheck7"></input>
-              <label className="form-check-label" for="DefaultCheck7">Boba</label>
-            </div>
-            <div className="form-check">
-              <input className="form-check-input" type="checkbox" value="" id="DefaultCheck8"></input>
-              <label className="form-check-label" for="DefaultCheck8">Breakfast</label>
-            </div>
-            <div className="form-check">
-              <input className="form-check-input" type="checkbox" value="" id="DefaultCheck9"></input>
-              <label className="form-check-label" for="DefaultCheck9">Pizza</label>
-            </div>
-            <div className="form-check">
-              <input className="form-check-input" type="checkbox"  value="" id="DefaultCheck10"></input>
-              <label className="form-check-label" for="DefaultCheck10">Platter</label>
-            </div>
-            <div className="form-check">
-              <input className="form-check-input" type="checkbox" value="" id="DefaultCheck11"></input>
-              <label className="form-check-label" for="DefaultCheck11">Noodles</label>
+            <li style={{ paddingTop: '75%' }}></li>
+            <div><h4 style={{ color: '#2E6F57' }}>Filter by</h4></div>
+            <hr />
+            <li><h5>Cuisine</h5></li>
+            {["American", "Chinese", "Halal", "Indian", "Japanese", "Korean"].map((cuisine, index) => (
+              <div className="form-check" key={cuisine}>
+                <input
+                  className="form-check-input"
+                  type="checkbox"
+                  value={cuisine}
+                  id={`DefaultCheck${index}`}
+                  onChange={() => handleFilterSelection(cuisine)}
+                  checked={selectedFilters.includes(cuisine)}
+                />
+                <label className="form-check-label" htmlFor={`DefaultCheck${index}`}>{cuisine}</label>
+              </div>
+            ))}
+            <hr />
+            <li><h5>Food Options</h5></li>
+            {["Boba", "Breakfast", "Pizza", "Platter", "Noodles"].map((food, index) => (
+              <div className="form-check" key={food}>
+                <input
+                  className="form-check-input"
+                  type="checkbox"
+                  value={food}
+                  id={`FoodCheck${index}`}
+                  onChange={() => handleFilterSelection(food)}
+                  checked={selectedFilters.includes(food)}
+                />
+                <label className="form-check-label" htmlFor={`FoodCheck${index}`}>{food}</label>
+              </div>
+            ))}
+            <button className="btn btn-primary" onClick={handleApplyFilters}>
+              Apply
+            </button>
+            <div>
+              <p>Selected Filters: {selectedFiltersText}</p>
             </div>
           </ul>
         </div>

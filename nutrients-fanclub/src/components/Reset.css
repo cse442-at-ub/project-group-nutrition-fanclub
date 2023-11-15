@@ -1,0 +1,35 @@
+.reset-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  
+  .header-0, .header-1 {
+    color: red;
+    font-size: 16px;
+    margin-top: 200px;
+    margin-bottom: 20px;
+  }
+  
+  .email-input, .verification-code-input, .new-password-input {
+    background-color: #eeeeee;
+    color: #717171;
+    font-size: 16px;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: 80%;
+    max-width: 400px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+  }
+  
+  .error-message {
+    color: red;
+    margin-top: 10px;
+  }
+  
