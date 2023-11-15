@@ -36,7 +36,6 @@ function Login({ handleLogin }) {
         } else {
             setPasswordError('');
         }
-
         return isValid;
     }
 

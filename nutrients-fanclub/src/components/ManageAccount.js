@@ -4,7 +4,7 @@ import Axios from 'axios'; // Make sure axios is installed and imported for HTTP
 import './ManageAccount.css'; // Make sure you create a CSS file with appropriate styles
 import './style.css';
 
-function ManageAccount() {
+function ManageAccount({handleLogout}) {
     const [feedback, setFeedback] = useState({
         message: '',
         errors: {}
@@ -12,38 +12,7 @@ function ManageAccount() {
 
     const navigate = useNavigate();
 
-    const handleLogout = async () => {
-        try {
-            // This is your backend endpoint for logging out
-            const logoutEndpoint = 'https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend_signup/signout.php';
-
-            // Axios POST request to the logout endpoint
-            const response = await Axios.post(logoutEndpoint);
-
-            // Assuming the logout is always successful as there is no status code check in the PHP code
-            // You may need to adjust this if your backend does send different responses
-            if (response.data === "Log Out successful") {
-                setFeedback({
-                    message: 'You have been logged out successfully.',
-                    errors: {}
-                });
-                navigate('/login'); // navigate to login page
-            } else {
-                // Handle any unexpected responses from the backend
-                setFeedback({
-                    message: 'Failed to logout. Please try again.',
-                    errors: {}
-                });
-            }
-        } catch (error) {
-            console.error('Logout failed:', error);
-            setFeedback({
-                message: 'An error occurred during logout. Please try again.',
-                errors: {}
-            });
-        }
-    };
-
+    // Logout invoke the {handleLogout} from Navbar.js
 
     const handleDeleteAccount = async () => {
         try {

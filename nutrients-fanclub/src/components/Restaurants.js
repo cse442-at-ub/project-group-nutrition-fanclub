@@ -1,6 +1,21 @@
-import React from 'react';
+import Axios from 'axios';
+import React, { useEffect, useState } from 'react';
 
 function Restaurants() {
+  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+
+  useEffect(() => {
+    // You can make an initial request to get all restaurants
+    Axios.get('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend_signup/filters.php')
+      .then((response) => {
+        // Initialize the list of restaurants with all restaurants
+        setFilteredRestaurants(response.data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }, []);
+
   return (
     <div className="row row-cols-1 row-cols-md-3 g-4" style={{ padding: '2%', paddingLeft: 160}}>
       <div className="col">
