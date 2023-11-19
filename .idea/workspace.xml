@@ -3,9 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="31e2e89e-19ab-4c0c-8429-e8e1baeeeba6" name="Changes" comment="darkmode">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nutrients-fanclub/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/nutrients-fanclub/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nutrients-fanclub/src/components/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/nutrients-fanclub/src/components/Login.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nutrients-fanclub/src/components/ManageAccount.js" beforeDir="false" afterPath="$PROJECT_DIR$/nutrients-fanclub/src/components/ManageAccount.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nutrients-fanclub/src/components/Restaurants.js" beforeDir="false" afterPath="$PROJECT_DIR$/nutrients-fanclub/src/components/Restaurants.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nutrients-fanclub/src/components/Searchbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/nutrients-fanclub/src/components/Searchbar.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,6 +85,13 @@
       <workItem from="1699317969023" duration="5000" />
       <workItem from="1699318213842" duration="12000" />
       <workItem from="1699318625381" duration="731000" />
+      <workItem from="1699814266654" duration="10163000" />
+      <workItem from="1699920147843" duration="225000" />
+      <workItem from="1700346739997" duration="92000" />
+      <workItem from="1700346845203" duration="298000" />
+      <workItem from="1700347166124" duration="526000" />
+      <workItem from="1700347811644" duration="308000" />
+      <workItem from="1700348354849" duration="6364000" />
     </task>
     <task id="LOCAL-00001" summary="storeinDB Update">
       <created>1697776830853</created>
@@ -223,5 +231,9 @@
     <MESSAGE value="ManageAccount" />
     <MESSAGE value="ManageAccount merged" />
     <option name="LAST_COMMIT_MESSAGE" value="ManageAccount merged" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

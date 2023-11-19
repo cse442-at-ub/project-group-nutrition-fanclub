@@ -16,19 +16,21 @@ function ManageAccount({handleLogout}) {
 
     const handleDeleteAccount = async () => {
         // Assuming the username is stored in localStorage after login
-        const username = localStorage.getItem('userEmail');
+        const userEmail  = localStorage.getItem('userEmail');
 
         // If username is not stored, you should retrieve it from wherever you have stored the login information
-        if (!username) {
-            alert('No user is logged in.');
-            return;
-        }
+        console.log('111111111111111111')
+        console.log(userEmail )
 
         try {
-            const response = await Axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend_signup/delete.php', {
+            console.log('333333333333333')
+            const response = await Axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/delete.php', {
                 action: 'deleteAccount',
-                username: username
+                email: userEmail
             });
+
+
+            console.log('22222222222222')
 
             if (response.data.status === 1) {
                 alert(response.data.message);
@@ -40,6 +42,9 @@ function ManageAccount({handleLogout}) {
         } catch (error) {
             console.error('Error deleting account:', error);
             alert('Failed to delete account. Please try again.');
+            console.log(localStorage)
+            console.log('Stored userEmail:', localStorage.getItem('userEmail')); // Log the stored userEmail for debugging
+
         }
     };
 
