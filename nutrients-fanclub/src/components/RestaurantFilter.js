@@ -9,6 +9,18 @@ function RestaurantFilter() {
   const [selectedFiltersText, setSelectedFiltersText] = useState('');
   const navigate = useNavigate();
 
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearchInputChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const filteredRestaurantsToShow = searchQuery
+      ? filteredRestaurants.filter(restaurant =>
+          restaurant.toLowerCase().includes(searchQuery.toLowerCase()))
+      : filteredRestaurants;
+
+
   const handleFilterSelection = (filter) => {
     const updatedFilters = [...selectedFilters];
 
@@ -74,10 +86,17 @@ function RestaurantFilter() {
           <div className="h3" style={{ whiteSpace: 'nowrap', paddingRight: 10, paddingLeft: 150, color: '#2E6F57' }}>
             <a>Find your campus grub!</a>
           </div>
-          <input className="form-control me-1 rounded-pill" type="search" placeholder="Search by name" aria-label="Search" />
-          <button className="btn btn-outline-success rounded-pill" type="submit">
-            Search
-          </button>
+          <input
+              className="form-control me-1 rounded-pill"
+              type="search"
+              placeholder="Search by name"
+              aria-label="Search"
+              value={searchQuery}
+              onChange={handleSearchInputChange}
+          />
+          {/*<button className="btn btn-outline-success rounded-pill" type="submit">*/}
+          {/*  Search*/}
+          {/*</button>*/}
         </form>
       </div>
 
@@ -132,8 +151,8 @@ function RestaurantFilter() {
       </div>
 
       <div className="row row-cols-1 row-cols-md-3 g-4" style={{ padding: '2%', paddingLeft: 160 }}>
-        {filteredRestaurants.map((restaurant, index) => (
-          <RestaurantCard key={index} restaurant={restaurant} />
+        {filteredRestaurantsToShow.map((restaurant, index) => (
+            <RestaurantCard key={index} restaurant={restaurant} />
         ))}
       </div>
     </div>
