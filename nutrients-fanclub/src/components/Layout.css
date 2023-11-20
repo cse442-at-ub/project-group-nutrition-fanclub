@@ -58,12 +58,15 @@
   .user {
     font-weight: bold;
     margin-bottom: 5px;
+    background-color: #006400;
+    padding: 5px;
   }
   
   .user-rating {
     margin-bottom: 10px;
     font-size: 18px;
     color: #ffa500;
+    background-color: #cccccc;
   }
   
   .images {
@@ -84,5 +87,73 @@
     .tags, .images {
       flex-direction: column;
     }
+  }
+  
+
+  .review-layout {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .review-content {
+    flex: 1; 
+    margin-right: 20px; 
+    background-color: #cccccc;
+    padding: 5px;
+    max-width: 600px;
+  }
+
+  .reviews-content p {
+    word-wrap: break-word; 
+    overflow-wrap: break-word; 
+  }
+
+  .images-layout {
+    flex: 1; 
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap; 
+  }
+
+
+  img {
+    max-width: 100%;
+    height: auto;
+    margin-right: 10px; 
+    margin-bottom: 10px; 
+  }
+
+  .input-group {
+    margin-bottom: 10px; 
+  }
+  
+
+  .post-review-btn {
+
+  }
+  
+
+  .input-group input,
+  .input-group textarea {
+    width: 100%; 
+    padding: 5px;
+    margin-bottom: 5px;
+  }
+  
+
+  .username-input {
+    background-color: #f3f3f3; 
+
+  }
+  
+
+  .rating-input {
+
+  }
+  
+
+  .content-input {
+
   }
   

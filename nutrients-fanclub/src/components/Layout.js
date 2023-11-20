@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Layout.css';
-import axios from "axios";
+import axios from 'axios';
 
 function Layout(){
     const [comment, setComment] = useState('');
@@ -17,6 +17,64 @@ function Layout(){
         image: ["image1", "image2", "image3"]
     };
     const [restaurantData, setRestaurantData] = useState(RD);
+
+    const [isReviewing, setIsReviewing] = useState(false);
+    const [userReview, setUserReview] = useState({
+        username: '',
+        rating: '',
+        content: ''
+    });
+
+    const handleReviewClick = async () => {
+        const userEmail = localStorage.getItem('userEmail');
+        try {
+            const response = await axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend/Setting.php', {
+                email: userEmail,
+                action: "retrieve",
+            });
+            localStorage.setItem('userData', JSON.stringify(response.data));
+            setUserReview({
+                ...userReview,
+                username: response.data.username,
+            });
+            setIsReviewing(true);
+        } catch (error) {
+            console.error("Error fetching user data:", error);
+        }
+    };
+
+    const handleSubmitReview = async () => {
+        try {
+            const response = await axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend/Save_Comments.php', {
+                username: userReview.username,
+                rating: userReview.rating,
+                comment: userReview.content,
+                restaurant_name: restaurantData.name,
+            });
+            
+            if (response.data.message === "Comment added successfully") {
+
+                console.log("true")
+                setRestaurantData(prevData => ({
+                    ...prevData,
+                    lastPerson: userReview.username,
+                    lastRating: userReview.rating,
+                    lastcontent: userReview.content
+                }));
+    
+
+                setUserReview({
+                    username: '',
+                    rating: '',
+                    content: ''
+                });
+                setIsReviewing(false);
+            }
+            console.log(response.data);
+        } catch (error) {
+            console.error("Error posting review:", error);
+        }
+    };
 
     const sendReview = () => {
         if (!comment || !rating) {
@@ -75,39 +133,62 @@ function Layout(){
                 <span>⭐️ {restaurantData.average_rating}</span>
                 <span>({restaurantData.count} reviews)</span>
             </div>
-                <div className="reviews">
-                <div className="user">{restaurantData.lastPerson}</div>
-                <div className="user-rating">{restaurantData.lastRating}</div>
-                <p>{restaurantData.lastcontent}</p>
-            </div>
-            <div className="images">
-                {restaurantData.image.map((img, index) => (
-                <img key={index} src={img} alt={`restaurant-img-${index}`} />
+            <div className="tags">
+                {restaurantData.tags.map(tag => (
+                    <span key={tag} className="tag">{tag}</span>
                 ))}
             </div>
-            <div className="comment">
-                <label for="comment_box">Comment: 
-                    <input
-                        id="comment_box"
-                        value={comment}
-                        onChange={(e) => setComment(e.target.value)}
-                    />
-                </label>
-                <span style={{padding:3}}/>
-                <label for="rating_box">Rating:
-                    <input
-                        type="number"
-                        min="0"
-                        max="5"
-                        id="rating_box"
-                        value={rating}
-                        onChange={(e) => setRating(e.target.value)}
-                    />
-                </label>
-                <span style={{padding:3}}/>
-                <button className="btn btn-primary" onClick={sendReview}>Submit</button>
+            <div className="review-layout">
+                <div className="review-content">
+                    {isReviewing ? (
+                        <>
+                            <div className="input-group">
+                                <input
+                                    type="text"
+                                    value={userReview.username}
+                                    readOnly
+                                    className="username-input"
+                                />
+                            </div>
+                            <div className="input-group">
+                                <input
+                                    type="number"
+                                    value={userReview.rating}
+                                    onChange={e => setUserReview({...userReview, rating: e.target.value})}
+                                    min="0"
+                                    max="5"
+                                    step="0.1"
+                                    className="rating-input"
+                                />
+                            </div>
+                            <div className="input-group">
+                                <textarea
+                                    value={userReview.content}
+                                    onChange={e => setUserReview({...userReview, content: e.target.value})}
+                                    className="content-input"
+                                />
+                            </div>
+                            <button onClick={handleSubmitReview} className="post-review-btn">POST</button>
+                        </>
+                    ) : (
+
+                        <div className="review-content">
+                            <div className="user">{restaurantData.lastPerson}</div>
+                            <div className="user-rating">{restaurantData.lastRating}</div>
+                            <p>{restaurantData.lastcontent}</p>
+                            <button onClick={handleReviewClick} className="leave-review-btn">Leave my review</button>
+                        </div>
+                    )}
+                    </div>
+                
+                <div className="images-layout">
+                    {restaurantData.image.map((img, index) => (
+                        <img key={index} src={img} alt={`restaurant-img-${index}`} />
+                    ))}
+                </div>
             </div>
         </div>
+
     );
 }
 export default Layout;
