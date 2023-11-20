@@ -37,6 +37,18 @@ if ($mysqli->query($createReviewsTable) === TRUE) {
     echo "Error creating table: " . $mysqli->error;
 }
 
+$modifyCommentsTable = "ALTER TABLE User_Comments CHANGE user_id username VARCHAR(255) NOT NULL;";
+
+// SQL
+if ($mysqli->query($modifyCommentsTable) === TRUE) {
+    echo "Table User_Comments modified successfully";
+} else {
+    echo "Error modifying table: " . $mysqli->error;
+}
+
+
+
+$mysqli->close();
 function insertRestaurant($name, $location) {
     // 
     global $mysqli; 
@@ -61,7 +73,7 @@ function insertRestaurant($name, $location) {
     $stmt->close();
 }
 
-// 
+
 
 
   
