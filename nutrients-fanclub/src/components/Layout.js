@@ -2,9 +2,17 @@ import React, { useState, useEffect } from 'react';
 import './Layout.css';
 import axios from 'axios';
 
-function Layout(){
+const imageContext = require.context('./images', false, /\.(jpg)$/);
+const images = imageContext.keys().reduce((acc, key) => {
+  acc[key] = imageContext(key);
+  return acc;
+}, {});
+
+function Layout({ restaurant }){
+    const restaurantImage = images[`./${restaurant}.jpg`];
+    const restaurantImage2 = images[`./${restaurant}2.jpg`];
     const RD = {
-        name: "Sample Name",
+        name: restaurant,
         address: "Sample address",
         count: 68,
         rate: "3.0",
@@ -21,32 +29,6 @@ function Layout(){
         rating: '',
         content: ''
     });
-
-    useEffect(() => {
-        axios
-        .get('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend_signup/reviews_display.php')
-        .then((response) => {
-            const data = response.data;
-
-            if (data.status === 1) {
-            setRestaurantData({
-                restaurant_name: data.most_recent_comment.restaurant_name,
-                address: data.address,
-                count: data.count,
-                average_rating: data.average_rating,
-                lastPerson: data.most_recent_comment.username,
-                lastRating: data.most_recent_comment.rating,
-                lastcontent: data.most_recent_comment.comment,
-                image: data.image,
-            });
-            } else {
-            console.error('Failed to fetch restaurant data:', data.message);
-            }
-        })
-        .catch((error) => {
-            console.error('Error fetching restaurant data:', error);
-        });
-    }, []);
 
     const handleReviewClick = async () => {
         const userEmail = localStorage.getItem('userEmail');
@@ -157,9 +139,8 @@ function Layout(){
                     </div>
                 
                 <div className="images-layout">
-                    {restaurantData.image.map((img, index) => (
-                        <img key={index} src={img} alt={`restaurant-img-${index}`} />
-                    ))}
+                    <img src={restaurantImage} alt="..." style={{ maxHeight: 'fit-content' }} />
+                    <img src={restaurantImage} alt="..." style={{ maxHeight: 'fit-content' }} />
                 </div>
             </div>
         </div>
