@@ -1,0 +1,16 @@
+/*Apply dynamic UI on search bar*/
+.h3-responsive {
+    font-size: 2vw; /* Adjust the font size based on the viewport width */
+}
+
+@media (max-width: 600px) { /* For smaller screens, you might want a minimum font size */
+    .h3-responsive {
+        font-size: 12px; /* Minimum font size */
+    }
+}
+
+@media (min-width: 1200px) { /* For larger screens, you might want a maximum font size */
+    .h3-responsive {
+        font-size: 24px; /* Maximum font size */
+    }
+}
