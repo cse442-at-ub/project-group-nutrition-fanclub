@@ -50,9 +50,7 @@ $mysqli = connectToDatabase();
 
 
 $sql = "ALTER TABLE restaurants_InFo
-        ADD COLUMN count INT,
-        ADD COLUMN tags JSON,
-        ADD COLUMN images JSON";
+        ADD COLUMN rate float";
 
 // exe
 if ($mysqli->query($sql) === TRUE) {
