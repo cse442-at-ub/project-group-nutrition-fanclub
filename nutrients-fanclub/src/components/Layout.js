@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import './Layout.css';
 import axios from 'axios';
 
@@ -8,21 +9,28 @@ const images = imageContext.keys().reduce((acc, key) => {
   return acc;
 }, {});
 
-function Layout({ restaurant }){
+function Layout(){
+    const location = useLocation();
+    const restaurantDataFromLocation = location.state.restaurantData;
+    const restaurantNameFromlocation = location.state.restaurant;
+
+    const [restaurantData, setRestaurantData] = useState(restaurantDataFromLocation);
+    const [restaurant, setRestaurant] = useState(restaurantNameFromlocation);
+
     const restaurantImage = images[`./${restaurant}.jpg`];
     const restaurantImage2 = images[`./${restaurant}2.jpg`];
-    const RD = {
-        name: restaurant,
-        address: "Sample address",
-        count: 68,
-        rate: "3.0",
-        tags: ["tag1","tag2","tag3","tag4","tag5"],
-        lastPerson: "Sample User",
-        lastRating: "2.0",
-        lastcontent: "Overall the experience  I had at c3 was pretty terrible. I saw a rat inside the matzo ball soup and every single hand-sanitizer dispenser had nothing left. I did like the ice cream however",
-        image: ["image1", "image2","image3"]
-    };
-    const [restaurantData, setRestaurantData] = useState(RD);
+    // const RD = {
+    //     name: restaurant,
+    //     address: "Sample address",
+    //     count: 68,
+    //     rate: "3.0",
+    //     tags: ["tag1","tag2","tag3","tag4","tag5"],
+    //     lastPerson: "Sample User",
+    //     lastRating: "2.0",
+    //     lastcontent: "Overall the experience  I had at c3 was pretty terrible. I saw a rat inside the matzo ball soup and every single hand-sanitizer dispenser had nothing left. I did like the ice cream however",
+    //     image: ["image1", "image2","image3"]
+    // };
+    // const [restaurantData, setRestaurantData] = useState(RD);
     const [isReviewing, setIsReviewing] = useState(false);
     const [userReview, setUserReview] = useState({
         username: '',
