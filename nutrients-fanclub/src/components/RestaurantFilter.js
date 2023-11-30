@@ -83,7 +83,7 @@ function RestaurantFilter() {
   return (
     <div>
       <div className="container-fluid" style={{ paddingTop: '10px' }}>
-        <form className="d-flex">
+        <form className="d-flex search-form">
           <div className="h3 h3-responsive" style={{ whiteSpace: 'nowrap', paddingRight: 10, paddingLeft: 150, color: '#2E6F57' }}>
             <a>Find your campus grub!</a>
           </div>
