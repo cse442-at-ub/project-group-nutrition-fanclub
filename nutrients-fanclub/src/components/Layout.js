@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import './Layout.css';
 import axios from 'axios';
+import StarRating from './StarRating';
 
 const imageContext = require.context('./images', false, /\.(jpg)$/);
 const images = imageContext.keys().reduce((acc, key) => {
@@ -15,6 +16,7 @@ function Layout(){
     const restaurantNameFromlocation = location.state.restaurant;
 
     const [restaurantData, setRestaurantData] = useState(restaurantDataFromLocation);
+    console.log(restaurantData);
     const [restaurant, setRestaurant] = useState(restaurantNameFromlocation);
 
     const restaurantImage = images[`./${restaurant}.jpg`];
@@ -94,15 +96,16 @@ function Layout(){
         <div className="restaurant-container">
             <h1>{restaurantData.name}</h1>
             <p>{restaurantData.address}</p>
+            
             <div className="rating">
                 <span>⭐️ {restaurantData.rate}</span>
                 <span>({restaurantData.count} reviews)</span>
             </div>
-            <div className="tags">
+            {/* <div className="tags">
                 {restaurantData.tags.map(tag => (
                     <span key={tag} className="tag">{tag}</span>
                 ))}
-            </div>
+            </div> */}
             <div className="review-layout">
                 <div className="review-content">
                     {isReviewing ? (
@@ -140,15 +143,15 @@ function Layout(){
                         <div className="review-content">
                             <div className="user">{restaurantData.lastPerson}</div>
                             <div className="user-rating">{restaurantData.lastRating}</div>
-                            <p>{restaurantData.lastcontent}</p>
+                            <p>{restaurantData.lastContent}</p>
                             <button onClick={handleReviewClick} className="leave-review-btn">Leave my review</button>
                         </div>
                     )}
                     </div>
                 
                 <div className="images-layout">
-                    <img src={restaurantImage} alt="..." style={{ maxHeight: 'fit-content' }} />
-                    <img src={restaurantImage} alt="..." style={{ maxHeight: 'fit-content' }} />
+                    <img src={restaurantImage} alt="..." style={{ maxHeight: 'fit-content', width: '200px', height: '200px' }} />
+                    <img src={restaurantImage2} alt="..." style={{ maxHeight: 'fit-content', width: '200px', height: '200px' }} />
                 </div>
             </div>
         </div>

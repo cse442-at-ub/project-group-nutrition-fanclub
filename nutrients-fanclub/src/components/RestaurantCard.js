@@ -1,4 +1,5 @@
 import React from 'react';
+import ClickRestaurant from './ClickRestaurant';
 
 const imageContext = require.context('./images', false, /\.(jpg)$/);
 const images = imageContext.keys().reduce((acc, key) => {
@@ -14,7 +15,7 @@ function RestaurantCard({ restaurant }) {
       <div className="card">
         <img src={restaurantImage} className="card-img-top" alt="..." style={{ maxHeight: 'fit-content' }} />
         <div className="card-body">
-          <h5 className="card-title">{restaurant}</h5>
+          <h5 className="card-title"><ClickRestaurant text={restaurant} /></h5>
           <p className="card-text"><small>REVIEW FROM {restaurant.reviewAuthor}</small></p>
           <p className="card-text">{restaurant.review}</p>
         </div>

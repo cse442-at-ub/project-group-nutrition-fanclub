@@ -124,6 +124,12 @@
     margin-bottom: 10px; 
   }
 
+  .images-layout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
   .input-group {
     margin-bottom: 10px; 
   }

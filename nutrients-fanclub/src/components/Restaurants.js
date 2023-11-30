@@ -42,7 +42,7 @@ function Restaurants() {
         <div className="card">
           <img src="https://images.squarespace-cdn.com/content/v1/580527219f745638d192141a/1548292570546-KF3UT6G2X2SEDE37NVVF/image-asset.jpeg" className="card-img-top" alt="..." style={{ maxHeight: 'fit-content' }} />
           <div className="card-body">
-            <h5 className="card-title">Sizzles</h5>
+            <h5 className="card-title">Sizzle</h5>
             <p className="card-text"><small>REVIEW FROM TAEKWONDOSTAN</small></p>
             <p className="card-text">“The seasoned cajun fries here are so bussin that I always come here. Whenever I feel down, the fries always lift me back up. 10/10 best Ellicott restaurant for sure.”</p>
           </div>
