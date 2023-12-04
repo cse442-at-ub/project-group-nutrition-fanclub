@@ -1,53 +1,53 @@
-.restaurant-container {
-    font-family: 'Arial', sans-serif;
-    max-width: 800px;
+  .restaurant-container {
+    max-width: 1200px;
     margin: auto;
-    border: 1px solid #ddd;
     padding: 20px;
-    background-color: #f8f8f8;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    background: #f5f5f5;
+  }
+
+  .restaurant-header {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .restaurant-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
   }
   
   h1 {
     color: #333;
-    font-size: 24px;
+    font-size: 35px;
     margin-bottom: 5px;
     text-align: center;
   }
   
   .restaurant-container p {
     color: #666;
-    font-size: 14px;
+    font-size: 18px;
     text-align: center;
   }
   
   .rating {
     display: flex;
     align-items: center;
-    margin: 10px 0;
+    margin-top: 5px;
+    margin-bottom: 15px;
     justify-content: center;
   }
   
-  .rating span:first-child {
-    color: #ffa500;
-    margin-right: 10px;
+  .rating span {
     font-size: 18px;
+    margin-left: 10px;
   }
-  
-  .tags {
+
+  .content-layout {
     display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .tag {
-    background-color: #006400;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 12px;
+    justify-content: space-between;
+    gap: 20px;
   }
   
   .reviews {
@@ -92,7 +92,12 @@
 
   .review-layout {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
+    flex: 1; 
+    padding: 10px;
+    background: #f5f5f5; 
+    position: relative;
   }
 
   .review-content {
@@ -108,7 +113,7 @@
     overflow-wrap: break-word; 
   }
 
-  .images-layout {
+  .images-section {
     flex: 1; 
     display: flex;
     justify-content: flex-start;
@@ -125,19 +130,39 @@
   }
 
   .images-layout {
+    flex: 1; 
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: center; 
+    align-items: center; 
+}
+
+.images-layout img {
+  flex: 1 1 auto;
+  max-width: calc(50% - 10px);
+  height: auto;
+  max-height: 100%;
+}
+
+@media (max-width: 768px) {
+  .content-layout {
+      flex-direction: column;
   }
-  
+
+  .images-layout img {
+      max-width: 100%;
+  }
+}
+
   .input-group {
     margin-bottom: 10px; 
   }
   
 
-  .post-review-btn {
+  .leave-review-btn, .post-review-btn {
+    bottom: 30px;
+    right: 60px;
 
-  }
+}
   
 
   .input-group input,
@@ -162,4 +187,5 @@
   .content-input {
 
   }
+  
   
