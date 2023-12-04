@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import './Layout.css';
 import axios from 'axios';
-import StarRating from './StarRating';
+import Star from './Star';
 
 const imageContext = require.context('./images', false, /\.(jpg)$/);
 const images = imageContext.keys().reduce((acc, key) => {
@@ -94,20 +94,18 @@ function Layout(){
 
     return(
         <div className="restaurant-container">
-            <h1>{restaurantData.name}</h1>
-            <p>{restaurantData.address}</p>
-            
-            <div className="rating">
-                <span>⭐️ {restaurantData.rate}</span>
-                <span>({restaurantData.count} reviews)</span>
+            <div className="restaurant-header">
+                <h1>{restaurantData.name}</h1>
+                <p>{restaurantData.address}</p>
+                <div className="rating">
+                    <Star score={restaurantData.rate} />
+                    <span>{restaurantData.rate}</span>
+                    <span>({restaurantData.count} reviews)</span>
+                </div>
             </div>
-            {/* <div className="tags">
-                {restaurantData.tags.map(tag => (
-                    <span key={tag} className="tag">{tag}</span>
-                ))}
-            </div> */}
-            <div className="review-layout">
-                <div className="review-content">
+            
+            <div className="content-layout">
+                <div className="review-layout">
                     {isReviewing ? (
                         <>
                             <div className="input-group">
@@ -127,6 +125,7 @@ function Layout(){
                                     max="5"
                                     step="0.1"
                                     className="rating-input"
+                                    placeholder="Rating"
                                 />
                             </div>
                             <div className="input-group">
@@ -134,6 +133,7 @@ function Layout(){
                                     value={userReview.content}
                                     onChange={e => setUserReview({...userReview, content: e.target.value})}
                                     className="content-input"
+                                    placeholder="Leave your review"
                                 />
                             </div>
                             <button onClick={handleSubmitReview} className="post-review-btn">POST</button>
@@ -147,11 +147,11 @@ function Layout(){
                             <button onClick={handleReviewClick} className="leave-review-btn">Leave my review</button>
                         </div>
                     )}
-                    </div>
+                </div>
                 
                 <div className="images-layout">
-                    <img src={restaurantImage} alt="..." style={{ maxHeight: 'fit-content', width: '200px', height: '200px' }} />
-                    <img src={restaurantImage2} alt="..." style={{ maxHeight: 'fit-content', width: '200px', height: '200px' }} />
+                    <img src={restaurantImage} alt="..."  />
+                    <img src={restaurantImage2} alt="..."  />
                 </div>
             </div>
         </div>
