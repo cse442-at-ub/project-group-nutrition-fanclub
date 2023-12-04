@@ -68,7 +68,7 @@ function Layout(){
             });
             
             if (response.data.message === "Comment added successfully") {
-
+                localStorage.setItem(restaurantData.name, [userReview.content,'']);
                 console.log("true")
                 setRestaurantData(prevData => ({
                     ...prevData,

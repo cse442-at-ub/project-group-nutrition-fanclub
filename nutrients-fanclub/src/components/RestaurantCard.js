@@ -9,6 +9,7 @@ const images = imageContext.keys().reduce((acc, key) => {
 
 function RestaurantCard({ restaurant }) {
   const restaurantImage = images[`./${restaurant}.jpg`];
+  const storedUserReview = localStorage.getItem(restaurant) || 'meow'
 
   return (
     <div className="col">
@@ -16,7 +17,7 @@ function RestaurantCard({ restaurant }) {
         <img src={restaurantImage} className="card-img-top" alt="..." style={{ maxHeight: 'fit-content' }} />
         <div className="card-body">
           <h5 className="card-title"><ClickRestaurant text={restaurant} /></h5>
-          <p className="card-text"><small>REVIEW FROM {restaurant.reviewAuthor}</small></p>
+          <p className="card-text"><small>ryankhan: {storedUserReview}</small></p>
           <p className="card-text">{restaurant.review}</p>
         </div>
       </div>
