@@ -85,3 +85,4 @@ error_log("Database connection closed");
 // Return the response in JSON format.
 echo json_encode($response);
 ?>
+
