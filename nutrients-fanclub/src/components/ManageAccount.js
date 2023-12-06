@@ -13,6 +13,10 @@ function ManageAccount({handleLogout}) {
 
 
     // Logout invoke the {handleLogout} from Navbar.js
+    const handleDeleteAndLogout = async () => {
+        await handleDeleteAccount();
+        handleLogout();
+    };
 
     const handleDeleteAccount = async () => {
         // Assuming the username is stored in localStorage after login
@@ -24,8 +28,7 @@ function ManageAccount({handleLogout}) {
 
         try {
             console.log('333333333333333')
-            const response = await Axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/delete.php', {
-                action: 'deleteAccount',
+            const response = await Axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend/delete.php', {
                 email: userEmail
             });
 
@@ -35,10 +38,11 @@ function ManageAccount({handleLogout}) {
             if (response.data.status === 1) {
                 alert(response.data.message);
                 localStorage.clear(); // Clear all local storage items including logged in user data
-                navigate('/login'); // Redirect to login after account deletion
+                navigate('/CSE442-542/2023-Fall/cse-442ae/build/login'); // Redirect to login after account deletion
             } else {
                 alert(response.data.message);
             }
+            navigate('/CSE442-542/2023-Fall/cse-442ae/build/')
         } catch (error) {
             console.error('Error deleting account:', error);
             alert('Failed to delete account. Please try again.');
@@ -64,7 +68,7 @@ function ManageAccount({handleLogout}) {
                     <div className="manage-account-action">
                         <h3>Delete Your Account</h3>
                         <p>You can delete your account to permanently remove all your personal data and reviews from our platform. Once deleted, this action cannot be undone.</p>
-                        <button className="delete-button" onClick={handleDeleteAccount}>Delete Account</button>
+                        <button className="delete-button" onClick={handleDeleteAndLogout}>Delete Account</button>
                     </div>
 
                     {feedback.message && <div className="feedback" style={{ color: 'red' }}>{feedback.message}</div>}
