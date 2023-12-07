@@ -15,12 +15,21 @@ function Layout(){
     const restaurantDataFromLocation = location.state.restaurantData;
     const restaurantNameFromlocation = location.state.restaurant;
 
+    const [showNotification, setShowNotification] = useState(false);
+
     const [restaurantData, setRestaurantData] = useState(restaurantDataFromLocation);
-    console.log(restaurantData);
+
+
+
     const [restaurant, setRestaurant] = useState(restaurantNameFromlocation);
 
     const restaurantImage = images[`./${restaurant}.jpg`];
     const restaurantImage2 = images[`./${restaurant}2.jpg`];
+    
+    useEffect(() => {
+        console.log('restaurantData updated:', restaurantData);
+    }, [restaurantData]);
+
     // const RD = {
     //     name: restaurant,
     //     address: "Sample address",
@@ -41,24 +50,41 @@ function Layout(){
     });
 
     const handleReviewClick = async () => {
-        const userEmail = localStorage.getItem('userEmail');
-        try {
-            const response = await axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend/Setting.php', {
-                email: userEmail,
-                action: "retrieve",
-            });
-            localStorage.setItem('userData', JSON.stringify(response.data));
-            setUserReview({
-                ...userReview,
-                username: response.data.username,
-            });
-            setIsReviewing(true);
-        } catch (error) {
-            console.error("Error fetching user data:", error);
+
+
+        if (localStorage.getItem("isLogin") === 'true'){
+            const userEmail = localStorage.getItem('userEmail');
+            try {
+                const response = await axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend/Setting.php', {
+                    email: userEmail,
+                    action: "retrieve",
+                });
+                localStorage.setItem('userData', JSON.stringify(response.data));
+                setUserReview({
+                    ...userReview,
+                    username: response.data.username,
+                });
+                setIsReviewing(true);
+            } catch (error) {
+                console.error("Error fetching user data:", error);
+            }
+        } else {
+            setShowNotification(true);
+            setTimeout(() => {
+                setShowNotification(false);
+            }, 3000); 
         }
     };
 
     const handleSubmitReview = async () => {
+
+        const getnewmean = ((restaurantData.rate * restaurantData.count) + parseFloat(userReview.rating)) / (restaurantData.count + 1);
+        const newRate = parseFloat(getnewmean.toFixed(1));
+        const newCount = restaurantData.count + 1;
+
+        console.log("user review is :", userReview);
+
+
         try {
             const response = await axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend/Save_Comments.php', {
                 username: userReview.username,
@@ -67,15 +93,35 @@ function Layout(){
                 restaurant_name: restaurantData.name,
             });
             
+            await axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend/Save_new_rate.php', {
+                name: restaurantData.name,
+                rate: newRate,
+                count: newCount,
+            });
+
+
             if (response.data.message === "Comment added successfully") {
                 localStorage.setItem(restaurantData.name, [userReview.content,'']);
                 console.log("true")
-                setRestaurantData(prevData => ({
-                    ...prevData,
+                setRestaurantData(prevData => {
+                    const newData = {
+                        ...prevData,
+                        lastPerson: userReview.username,
+                        lastRating: userReview.rating,
+                        lastContent: userReview.content
+                    };
+                    console.log('Updated state:', restaurantData);
+                });
+                
+
+                setRestaurantData({
+                    ...restaurantData,
                     lastPerson: userReview.username,
                     lastRating: userReview.rating,
-                    lastcontent: userReview.content
-                }));
+                    lastContent: userReview.content,
+                    rate: newRate,
+                    count: newCount
+                });
     
 
                 setUserReview({
@@ -83,6 +129,8 @@ function Layout(){
                     rating: '',
                     content: ''
                 });
+
+
                 setIsReviewing(false);
             }
             console.log(response.data);
@@ -94,6 +142,7 @@ function Layout(){
 
     return(
         <div className="restaurant-container">
+            {showNotification && <div className="notification">You need to Login first!</div>}
             <div className="restaurant-header">
                 <h1>{restaurantData.name}</h1>
                 <p>{restaurantData.address}</p>
