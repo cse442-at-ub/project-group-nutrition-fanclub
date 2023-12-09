@@ -6,7 +6,7 @@ import './RestaurantFilter.css'
 
 function RestaurantFilter() {
   const [selectedFilters, setSelectedFilters] = useState([]);
-  const [filteredRestaurants, setFilteredRestaurants] = useState(["Sizzles","Crossroads Culinary Center","Wrap-It-Up","Tim Hortons", "1846 Grill","Subway","Fowl Play","Young Chow", "Pan Asia","Kali Orexi","Tikka Table","Dancing Chopsticks","Noodle Pavilion", "Austin's Kitchen", "Kung Fu Tea","La Rosa","Moe's"]);
+  const [filteredRestaurants, setFilteredRestaurants] = useState(["Sizzles","Crossroads Culinary Center","Wrap-It-Up","Tim Hortons", "1846 Grill","Subway","Fowl Play","Young Chow", "Pan Asia","Kali Orexi","Tikka Table","Dancing Chopsticks","Noodle Pavilion", "Austins Kitchen", "Kung Fu Tea","La Rosa","Moes"]);
   const [selectedFiltersText, setSelectedFiltersText] = useState('');
   const navigate = useNavigate();
 
