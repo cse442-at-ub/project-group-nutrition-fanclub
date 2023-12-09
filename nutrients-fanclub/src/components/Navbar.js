@@ -53,7 +53,7 @@ function Navbar({isLogin, handleLogout}) {
                 <button className="btn btn-light rounded-pill" type="button" style={{ color: "#2E6F57" }}>SIGN IN</button>
               </Link>
   </ul>*/}
-            {isLogin ? (
+            {localStorage.getItem("isLogin") ? (
               <button 
                 className="btn btn-light rounded-pill" 
                 type="button" 

@@ -9,6 +9,7 @@ import Signup from './components/Signup';
 import Reset  from './components/Reset';
 import Setting from './components/Setting';
 import ManageAccount from "./components/ManageAccount";
+import Layout from "./components/Layout";
 
 
 
@@ -29,7 +30,7 @@ function App() {
 
   const handleLogout = () => {
     setisLogin(false);
-    localStorage.removeItem('isLogIn');
+    localStorage.clear();
     window.location.href = "/CSE442-542/2023-Fall/cse-442ae/build/";
   };
 
@@ -46,6 +47,7 @@ function App() {
             <Route path="/CSE442-542/2023-Fall/cse-442ae/build/Setting" element={<Setting />} />
             <Route path="/CSE442-542/2023-Fall/cse-442ae/build/Reset" element={<Reset />} />
             <Route path="/CSE442-542/2023-Fall/cse-442ae/build/manageaccount" element={<ManageAccount handleLogout={handleLogout}/>} />
+            <Route path="/CSE442-542/2023-Fall/cse-442ae/build/Layout" element={<Layout />} />
 
           </Routes>
         </Router>

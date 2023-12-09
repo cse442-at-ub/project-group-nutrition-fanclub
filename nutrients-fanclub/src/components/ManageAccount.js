@@ -9,41 +9,49 @@ function ManageAccount({handleLogout}) {
         message: '',
         errors: {}
     });
-
     const navigate = useNavigate();
 
+
     // Logout invoke the {handleLogout} from Navbar.js
+    const handleDeleteAndLogout = async () => {
+        await handleDeleteAccount();
+        handleLogout();
+    };
 
     const handleDeleteAccount = async () => {
+        // Assuming the username is stored in localStorage after login
+        const userEmail  = localStorage.getItem('userEmail');
+
+        // If username is not stored, you should retrieve it from wherever you have stored the login information
+        console.log('111111111111111111')
+        console.log(userEmail )
+
         try {
-            // Placeholder for actual delete account backend endpointt
-            const deleteAccountEndpoint = '/api/delete-account';
-
-            // You should replace this with the actual backend call
-            const response = await Axios.delete(deleteAccountEndpoint);
-
-            // Check response from the backend and proceed
-            if (response.status === 200) {
-                setFeedback({
-                    message: 'Your account has been deleted successfully.',
-                    errors: {}
-                });
-                navigate('/CSE442-542/2023-Fall/cse-442ae/build/'); // navigate to some confirmation page or back to home
-            } else {
-                // Handle any errors returned from the backend
-                setFeedback({
-                    message: 'Failed to delete the account. Please try again.',
-                    errors: {}
-                });
-            }
-        } catch (error) {
-            console.error('Delete account failed:', error);
-            setFeedback({
-                message: 'An error occurred while deleting the account. Please try again.',
-                errors: {}
+            console.log('333333333333333')
+            const response = await Axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend/delete.php', {
+                email: userEmail
             });
+
+
+            console.log('22222222222222')
+
+            if (response.data.status === 1) {
+                alert(response.data.message);
+                localStorage.clear(); // Clear all local storage items including logged in user data
+                navigate('/CSE442-542/2023-Fall/cse-442ae/build/login'); // Redirect to login after account deletion
+            } else {
+                alert(response.data.message);
+            }
+            navigate('/CSE442-542/2023-Fall/cse-442ae/build/')
+        } catch (error) {
+            console.error('Error deleting account:', error);
+            alert('Failed to delete account. Please try again.');
+            console.log(localStorage)
+            console.log('Stored userEmail:', localStorage.getItem('userEmail')); // Log the stored userEmail for debugging
+
         }
     };
+
 
     return (
         <div className="manage-account-page">
@@ -60,7 +68,7 @@ function ManageAccount({handleLogout}) {
                     <div className="manage-account-action">
                         <h3>Delete Your Account</h3>
                         <p>You can delete your account to permanently remove all your personal data and reviews from our platform. Once deleted, this action cannot be undone.</p>
-                        <button className="delete-button" onClick={handleDeleteAccount}>Delete Account</button>
+                        <button className="delete-button" onClick={handleDeleteAndLogout}>Delete Account</button>
                     </div>
 
                     {feedback.message && <div className="feedback" style={{ color: 'red' }}>{feedback.message}</div>}

@@ -28,7 +28,7 @@ function Settingsbutton({ isLogin }) {
 
   return isLogin ? (
       <img
-        src={"https://img.icons8.com/?size=200&id=3473&format=png"}
+        src={"https://cdn-icons-png.flaticon.com/128/8919/8919839.png"}
         style={{
           position: 'fixed',
           bottom: '20px',
