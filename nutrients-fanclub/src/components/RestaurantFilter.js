@@ -2,6 +2,7 @@ import Axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import RestaurantCard from './RestaurantCard';
+import './RestaurantFilter.css'
 
 function RestaurantFilter() {
   const [selectedFilters, setSelectedFilters] = useState([]);
@@ -82,8 +83,8 @@ function RestaurantFilter() {
   return (
     <div>
       <div className="container-fluid" style={{ paddingTop: '10px' }}>
-        <form className="d-flex">
-          <div className="h3" style={{ whiteSpace: 'nowrap', paddingRight: 10, paddingLeft: 150, color: '#2E6F57' }}>
+        <form className="d-flex search-form">
+          <div className="h3 h3-responsive" style={{ whiteSpace: 'nowrap', paddingRight: 10, paddingLeft: 150, color: '#2E6F57' }}>
             <a>Find your campus grub!</a>
           </div>
           <input
