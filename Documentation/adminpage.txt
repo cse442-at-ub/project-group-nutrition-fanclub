@@ -1,0 +1,5 @@
+Dashboards: Manage clients and cleaners
+
+Clients: Track each clients profile, payments, and schedule, General Info - contact information, tickets
+# add ratings components for employers
+Cleaners: Track each cleaners profile, payments, and schedule, General info - contact information, tickets, ratings
