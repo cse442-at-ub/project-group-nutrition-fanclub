@@ -50,7 +50,7 @@ const containerStyle = {
   alignItems: 'center',
   height: '100vh',
   textAlign: 'center',
-  backgroundColor: '#f4f4f4',
+  backgroundColor: '#f5f5f4',
 };
 
 const titleStyle = {

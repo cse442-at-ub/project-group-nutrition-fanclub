@@ -1,104 +1,110 @@
-import React, { useState } from 'react';
-import Axios from 'axios';
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Bigbutton from './Bigbutton';
-import Content_signup from "./Content_signup";
-import Input_signup from "./input_signup";
+import axios from "axios";
 
-import './style.css';
+const Signup = () => {
+  const [formData, setFormData] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
 
-function Signup() {
-    const [formData, setFormData] = useState({
-        username: '',
-        email: '',
-        password: '',
-        favorite_restaurant: ''
-    });
-    const [feedback, setFeedback] = useState({
-        message: '',
-        errors: {}
-    });
+  const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
+  // Handle input changes
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(prevState => ({
-            ...prevState,
-            [name]: value
-        }));
-    };
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            const response = await Axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Fall/cse-442ae/backend_signup/signupFinal.php', formData);
-            const data = response.data;
-            if (data.status === 1) {
-                setFeedback({
-                    message: data.message,
-                    errors: {}
-                });
-                console.log("send success");
-                navigate('/CSE442-542/2023-Fall/cse-442ae/build/login');  // Navigate after a successful signup
-            } else {
-                setFeedback({
-                    message: data.message,
-                    errors: data.errors
-                });
-            }
-        } catch (err) {
-            console.error("An error occurred:", err);
-            setFeedback({
-                message: 'An error occurred. Please try again.',
-                errors: {}
-            });
-        }
-    };
+    // Basic validation
+    if (!formData.username || !formData.email || !formData.password) {
+      setMessage("All fields are required!");
+      return;
+    }
 
-    return (
-        <div className='app-container' style={{ paddingTop: 150 }}>
-            <form onSubmit={handleSubmit}>
-                <Input_signup
-                    placeholder="Username"
-                    name="username"
-                    value={formData.username}
-                    onChange={handleChange}
-                />
-                {feedback.errors.username && <div className="error-message" style={{color: 'red'}}>{feedback.errors.username}</div>}
+    try {
+      const response = await axios.post("http://localhost:5000/api/signup", {
+        username: formData.username,
+        email: formData.email,
+        password: formData.password,
+      });
 
-                <Input_signup
-                    placeholder="Email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                />
-                {feedback.errors.email && <div className="error-message" style={{color: 'red'}}>{feedback.errors.email}</div>}
+      if (response.data.status === "success") {
+        setMessage("Signup successful! Redirecting to login...");
+        setTimeout(() => navigate("/login"), 2000);
+      } else {
+        setMessage(response.data.message || "Signup failed.");
+      }
+    } catch (error) {
+      console.error("Signup error:", error);
+      setMessage("An error occurred. Please try again.");
+    }
+  };
 
-                <Input_signup
-                    placeholder="Password"
-                    type="password"
-                    name="password"
-                    value={formData.password}
-                    onChange={handleChange}
-                />
-                {feedback.errors.password && <div className="error-message" style={{color: 'red'}}>{feedback.errors.password}</div>}
+  return (
+    <div style={containerStyle}>
+      <h2>Sign Up</h2>
+      {message && <p style={messageStyle}>{message}</p>}
+      <form onSubmit={handleSubmit} style={formStyle}>
+        <label>Username</label>
+        <input type="text" name="username" value={formData.username} onChange={handleChange} required style={inputStyle} />
 
-                <Input_signup
-                    placeholder="Location"
-                    name="favorite_restaurant"
-                    value={formData.favorite_restaurant}
-                    onChange={handleChange}
-                />
-                {feedback.errors.favorite_restaurant && <div className="error-message">{feedback.errors.favorite_restaurant}</div>}
+        <label>Email</label>
+        <input type="email" name="email" value={formData.email} onChange={handleChange} required style={inputStyle} />
 
-                <Bigbutton text="CREATE" />
-            </form>
+        <label>Password</label>
+        <input type="password" name="password" value={formData.password} onChange={handleChange} required style={inputStyle} />
 
-            {feedback.message && <div className="feedback" style={{color: 'red'}}>{feedback.message}</div>}
-            <Content_signup />
-        </div>
-    );
-}
+        <button type="submit" style={buttonStyle}>Sign Up</button>
+      </form>
+      <p>Already have an account? <a href="/cleaner/login">Login here</a></p>
+    </div>
+  );
+};
+
+// Styles
+const containerStyle = {
+  maxWidth: "400px",
+  margin: "50px auto",
+  padding: "20px",
+  border: "1px solid #ddd",
+  borderRadius: "8px",
+  textAlign: "center",
+  boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+};
+
+const formStyle = {
+  display: "flex",
+  flexDirection: "column",
+  gap: "10px",
+};
+
+const inputStyle = {
+  padding: "10px",
+  fontSize: "16px",
+  border: "1px solid #ccc",
+  borderRadius: "5px",
+};
+
+const buttonStyle = {
+  padding: "10px",
+  fontSize: "16px",
+  backgroundColor: "#00AEEF",
+  color: "#fff",
+  border: "none",
+  borderRadius: "5px",
+  cursor: "pointer",
+  marginTop: "10px",
+};
+
+const messageStyle = {
+  color: "red",
+  fontWeight: "bold",
+};
 
 export default Signup;

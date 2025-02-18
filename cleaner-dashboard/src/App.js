@@ -70,7 +70,7 @@ function App() {
             <Router basename="/cleaner">
                 {renderNavbar()} {/* Dynamically render Navbar based on role */}
                 {/* <Settingsbutton isLogin={isLogin} /> */}
-                <div style={{ paddingTop: 100 }}></div>
+                <div style={{ paddingTop: 40 }}></div>
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/login" element={<Login handleLogin={handleLogin} />} />

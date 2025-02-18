@@ -40,17 +40,17 @@ function Navbar({ isLogin, handleLogout }) {
           <h1>Keywsco Cleans</h1>
         </span>
         <li className="form-check form-switch ms-auto">
-          <input
+          {/* <input
             className="form-check-input"
             type="checkbox"
             role="switch"
             id="flexSwitchCheckDefault"
             checked={isDarkMode}
             onChange={toggleDarkMode}
-          />
-          <label className="form-check-label" htmlFor="flexSwitchCheckDefault">
+          /> */}
+          {/* <label className="form-check-label" htmlFor="flexSwitchCheckDefault">
             <a>DARK</a>
-          </label>
+          </label> */}
         </li>
         <a style={{ padding: 7 }}></a>
         <div className="d-flex align-items-center">
